@@ -1,0 +1,360 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    ;
+}
+
+body {
+
+   
+    font-family: 'Poppins', sans-serif;
+}
+
+h1,h2,p,h3, ul{
+    color:#ffffff;
+}
+
+header {
+    background-color: #274a61;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left:0;
+    text-align: left; /* Align buttons to the left */
+
+   
+}
+.header-element{
+    background-color:#ffffff ;
+    display: flex;
+    position: relative;
+    justify-content: left;
+    position: fixed;
+    top: 0;
+    right:0;
+    left:0;
+    z-index:1;
+    
+
+}
+.middle-header{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-left: auto;
+    padding:10px;
+
+}
+
+.middle-header button{
+    font-size: 16px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right:20px;
+    margin-left: auto;
+    
+}
+.buttons  .auth{
+    font-size:17px;
+}
+
+.logo-left{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left:20px;
+
+}
+.logo-left h1{
+font-size:30px;
+white-space: nowrap;
+
+}
+
+
+
+
+
+
+
+.signin-button,
+.join-button, .cources, .doc, .support{
+    background-color: #fff;
+    color:#274a61;
+    padding: 8px 15px;
+    margin-right: 10px; /* Add margin to the right of buttons for spacing */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+.cources:hover, .doc:hover, .support:hover, .signin-button:hover, .join-button:hover{
+    background-color: #57bcff;
+    transition: 0.3s ease-in-out;
+}
+.button{
+background-color: #274a61;
+color:#fff;
+
+}
+
+
+.join{
+    background-color: #0888ff;
+    color:#fff;
+
+}
+
+.main-bg{ 
+margin-top:60px;    
+padding: 20px;
+background-color:#274a61;
+
+}
+
+.main-bg h1{
+ font-size: 40px;
+ white-space: nowrap;
+ overflow: hidden;
+
+}
+
+  
+
+
+
+
+
+
+#get-started{
+ text-align: center;
+ padding-top:30px;
+}
+ footer {
+    background-color: #274a61;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+  }
+
+
+
+#features{
+    padding-left:20px;
+
+}
+
+.filter{
+    all:unset;
+    margin-right: 40px;
+    background-color: #0888ff;
+}
+
+
+.get-btn{
+    margin:25px;
+}
+
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+  }
+
+
+#mobile-menu{
+ 
+ cursor: pointer;   
+display: block; 
+color: #274a61;
+display:none; 
+font-size: 22px;
+
+
+
+  }
+
+  
+
+ 
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right:0;
+    padding-top:20px;
+    margin-right: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    background-color: #274a61;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(80, 75, 75, 0.2);
+    border-radius: 20px;
+    border: 2px solid rgb(226, 226, 226);
+  }
+  
+
+   
+  
+  
+  
+  
+  
+  
+  .dropdown-content a {
+    
+    float: none;
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    padding:10px;
+    display: block;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size:14px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #6c797a;
+    border-radius: 20px;
+  }
+  
+
+
+  /*-------------------------- Styles for tablets -----------------------------------------*/
+@media (min-width: 600px) and (max-width: 900px) {
+    .logo-left h1{
+        font-size: 20px;
+        padding:5px
+
+    }
+    .middle-header button{
+        font-size: 13px; 
+       
+}
+
+
+.buttons .auth{
+    font-size: 14px;
+    
+}
+
+
+    
+    .main-bg h1{
+     font-size: 35px;
+     white-space: nowrap;
+     overflow: hidden;
+    
+    }
+    
+}
+
+/*---------------------------------------  mobile view----------------------------------------------- */
+  /* Styles for tablets */
+  @media (min-width: 350px) and (max-width: 600px) {
+    .logo-left h1{
+        font-size: 20px;
+        padding:5px
+
+    }
+    .middle-header button{
+        display: none;
+       
+}
+#mobile-menu{
+    display: block;
+}
+
+
+.buttons .auth{
+   display: none;
+    
+    
+}
+
+.main-bg{ margin-top: 25px;
+
+
+}
+    
+    .main-bg h1{
+     font-size: 19px;
+     white-space: nowrap;
+     overflow: hidden;
+    
+    }
+    .main-bg h2{
+        font-size: 15px;
+    }
+    #features{
+        font-size:15px
+    }
+    #get-started h3{
+        font-size: 16px;
+
+    }
+    #get-started p{
+        font-size: 15px;
+
+    }
+    .footer-bg{
+        font-size: 15px;
+    }
+    .get-btn{
+        font-size: 13px;
+    }
+
+    .signinmodal-content  .close-btn{
+        font-size: 25px;
+    }
+    .signinmodal-content  h2{
+
+        font-size: 18px;
+    }
+
+.signinmodal-content .signbtn-txt{
+
+        font-size: 14px;
+
+}
+.signupmodal-content  .signupclose-btn{
+    font-size: 25px;
+}
+
+.signupmodal-content h2{
+
+    font-size: 18px;
+}
+
+.signupmodal-content .btn-txt{
+
+    font-size: 14px;
+
+}
+}  
+
+

@@ -1,0 +1,603 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.fa-solid{
+    color:#274a61
+  
+
+}
+h1{
+    color: #1da1f2;
+}
+
+.post-container{
+font-family: Arial, sans-serif;
+    background-color: #274a61;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+}
+#profile-img{
+        object-fit: contain; /* Cover the entire container */
+        
+    
+}
+.comment-content{
+    all: unset; /* Reset all styles */
+    padding: 5px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    height: fit-content;
+    min-height: 50px;
+
+
+
+}
+
+.image-comment {
+ 
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    flex-direction: column; /* Stacking images vertically */
+    text-align: center; /* Center align text and inline elements */
+    overflow-y: auto;
+  
+}
+
+/* Image styling */
+.image-comment img {
+    width: 100%; /* Adjust to fit the container's width */
+    max-width: 250px; /* Optional: Set a max width for better control */
+    min-height: 100px; /* Minimum height */
+    max-height: 200px; /* Maximum height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    margin: 10px 0; /* Optional: Add margin for spacing between images */
+}
+#comment-input{
+    all: unset;
+    padding-right: 80px;
+    border: none;
+    width: 100%;
+    resize: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    min-height: 20px;
+    max-height: 100px;
+   
+    overflow-y: auto;
+    line-height: 1.4;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+    background-color: #dae4e9;
+
+
+
+}#comment-input::placeholder {
+    padding-left: 15px; /* Adjust as needed */
+    padding-right: 15px; /* Adjust as needed */
+    color: #666363; /* Optional: Change placeholder text color */
+}
+
+
+
+.tweet-box {
+    all: unset;
+    background-color: #dfe2e2;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    width: 80%;
+    height:fit-content;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-header {
+    all: unset;
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-img {
+    border-radius: 50%;
+    width:50px;
+    height: 50px;
+    margin-right: 20px;
+}
+.image-video-upload {
+    display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        
+   
+overflow: auto;
+white-space: nowrap;
+
+
+
+
+}
+
+.file-preview-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 20px;
+            white-space: nowrap; /* Prevent line breaks */
+        }
+        .file-preview {
+            width: 300px;
+            height: 300px;
+            object-fit: cover; /* Ensure the media covers the element while maintaining aspect ratio */
+        }
+        .file-preview img, .file-preview video {
+            width: 100%;
+            height: 100%;
+            display: block; /* Ensures no extra space within the container */
+        }
+
+        #file-preview-container img, #file-preview-container video {
+            width: 300px;
+            height: 300px;
+            object-fit: cover; /* Ensure the media fits within the specified dimensions */
+            display: block;
+        }
+
+
+
+        .comment-file-preview-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 20px;
+            white-space: nowrap; /* Prevent line breaks */
+        }
+        .comment-file-preview {
+            width: 300px;
+            height: 300px;
+            object-fit: cover; /* Ensure the media covers the element while maintaining aspect ratio */
+        }
+        .comment-file-preview img, .comment-file-preview video {
+            width: 100%;
+            height: 100%;
+            display: block; /* Ensures no extra space within the container */
+        }
+
+        #comment-file-preview-container img, #commentfile-preview-container video {
+            width: 300px;
+            height: 300px;
+            object-fit: cover; /* Ensure the media fits within the specified dimensions */
+            display: block;
+        }
+
+#tweet-input{
+    all: unset;
+    border: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    min-height: 20px;
+    max-height: 100px;
+    padding-right: 80px;
+    overflow:hidden;
+    line-height: 1.4;
+    box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+    background-color: #dfe2e2;;
+  
+   
+}
+#tweet-input:focus{
+    outline:none;
+}
+
+#tweet-input::placeholder {
+    padding-left: 9px; /* Adjust as needed */
+    padding-right: 15px; /* Adjust as needed */
+    color: #757575; /* Optional: Change placeholder text color */
+}
+
+.chat-container-unique {
+    all: unset; /* Reset all styles */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    border: 2px solid#918e8e;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    background-color: rgb(177, 175, 175);
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    height: fit-content;
+    min-height: 50px;
+}
+#openModalBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#comment-openModalBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.modal {
+    all: unset;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4);
+    animation: slideIn 0.5s;
+}
+.comment-modal {
+    all: unset;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4);
+    animation: slideIn 0.5s;
+}
+
+@keyframes slideIn {
+    from { bottom: -100%; }
+    to { bottom: 0; }
+}
+
+.modal-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    animation: slideUp 0.4s;
+}
+.comment-modal-content {
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    animation: slideUp 0.4s;
+}
+
+@keyframes slideUp {
+    from { bottom: -100%; }
+    to { bottom: 0; }
+}
+
+.close-btn {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    color: #837d7d;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+}
+.comment-close-btn {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    color: #837d7d;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #a84343;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.comment-close-btn:hover,
+.comment-close-btn:focus {
+    color: #a84343;
+    text-decoration: none;
+    cursor: pointer;
+}
+.chat-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.chat-container-unique .custom-textarea {
+    all: unset; /* Reset all properties (be cautious with this) */
+    border: none; /* No border */
+    outline: none; /* No outline */
+    width: 100%; /* Full width of the container */
+    resize: none; /* Disable resizing */
+    padding: 8px; /* Padding for inner content */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 14px; /* Font size */
+    min-height: 20px; /* Minimum height */
+    max-height: 100px; /* Maximum height */
+    padding-right: 80px; /* Right padding */
+    overflow-y: auto; /* Scroll vertically if needed */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    line-height: 1.4; /* Line height for readability */
+    box-sizing: border-box; /* Include padding and border in total width */
+    background-color: #fff; /* Background color */
+    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+    word-wrap: break-word; /* Break long words to wrap them */
+}
+
+
+.comment-content #comment-input{
+    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+    word-wrap: break-word; /* Break long words to wrap them */
+     box-sizing: border-box;
+     min-height: 20px;  /* Minimum height */
+     max-height: 100px; /* Maximum height */
+     padding-right:50px;
+     overflow-y: auto; /* Scroll vertically if needed */
+     overflow-x: hidden; /* Prevent horizontal scrolling */
+
+
+}
+    
+
+  
+    
+   
+
+::-webkit-scrollbar{
+    width:5px;
+    
+  }
+  
+  ::-webkit-scrollbar-track{
+    background: #d1e5ff;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+  
+    background: linear-gradient(#274a61,#d322ff);
+  }
+.custom-textarea:focus{
+    outline: none;
+}
+
+/* Style for the image and button container */
+.image-container {
+    position: absolute;
+    padding-right: 10px;;
+    top: 50%;
+    right: 10px; /* Adjust as needed */
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the image and button */
+}
+
+/* Adjust the styles for the image and button */
+.image-container a,
+.image-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+.custom-textarea::placeholder {
+    padding-left: 15px; /* Adjust as needed */
+    padding-right: 15px; /* Adjust as needed */
+    color: #666363; /* Optional: Change placeholder text color */
+}
+
+.tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icons .icon {
+    font-size: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#tweet-button {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#comment-tweet-button
+{
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#comment-tweet-button:disabled {
+    background-color: #aab8c2;
+    cursor: not-allowed;
+}
+
+.paper-plane{
+    all:unset;
+    display:none;
+}
+#image-file{
+  display: inline;
+}
+.like_post {
+    color: black; /* Default color */
+}
+.blue {
+    color: blue;
+}
+#tweet-button:disabled {
+    background-color: #aab8c2;
+    cursor: not-allowed;
+}
+.file-icon{
+           display: flex;
+           justify-content: center;
+            position: relative;
+            width: 300px;
+            height:300px;
+            background-image: url('../images/fileicon.png'); /* Path to the generic file icon */
+            background-size: cover;
+        }
+
+
+.comment-file-icon{
+      display: flex;
+        justify-content: center;
+         width: 100%;
+         min-width: 200px;
+         max-width: 300px;
+         min-height: 200px;
+         max-height:300px;
+         background-image: url('../images/fileicon.png'); /* Path to the generic file icon */
+         background-size: cover;
+    }
+
+        .file-extension {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #87939b;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .selected-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            display: none; /* Initially hidden */
+        }
+        .selected-overlay.show {
+            display: block; /* Show overlay when file is selected */
+        }
+
+        
+         .comment-file-extension {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             color: #87939b;
+             font-size: 22px;
+             font-weight: bold;
+         }
+         .comment-selected-overlay {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+             display: none; /* Initially hidden */
+         }
+         .comment-selected-overlay.show {
+             display: block; /* Show overlay when file is selected */
+         }
+    
+.fa-spinner{
+  animation: animate 1s ease infinite;
+
+}
+@keyframes animate {
+  0%{transform: rotate(0turn);
+}
+100%{
+  transform: rotate(1turn)
+}
+
+}
+
+
+#word-count-status {
+    position: absolute;
+    bottom: 10px;
+    right: 60px;
+    color: #888;
+    font-size: 14px;
+    pointer-events: none; /* This ensures that clicks on the word count do not interfere with typing in the textarea */
+}
+
+#word-count-status.red {
+    color: red; /* Red color when character limit is reached */
+}
+
+#app-refresh-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 0.3s ease; /* Smooth transition for sliding down */
+    margin-right: 20px;
+   
+}
+#app-refresh-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out;
+    color: #3498db;
+   
+  }
+  /* Rotation animation class */
+#app-refresh-icon.rotate {
+    transform: rotate(360deg);
+  }
+
+/* Styling for the refresh container */
+.refresh-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: top 0.3s ease; /* Smooth transition for sliding down */
+  }
+  
+  /* Styling for the refresh icon */
+  #refresh-icon {
+    font-size: 30px;
+    transition: transform 0.3s ease-in-out;
+    color: #3498db;
+    opacity: 0; /* Icon starts hidden */
+  }
+  
+  /* Rotate animation */
+  #refresh-icon.rotate {
+    transform: rotate(360deg);
+    opacity: 1; /* Show icon when rotating */
+  }
+  
+ 

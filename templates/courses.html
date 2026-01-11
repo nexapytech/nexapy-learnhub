@@ -1,0 +1,295 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexapy LearnHub - Learn Python from Basics to Advanced</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{%static 'css/courses.css'%}">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/nexapytech.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Nexapy LearnHub</h1>
+            <p>Your One-Stop Destination to Master Python Programming</p>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a  style="color:#fa970c" href="/home">Home</a></li>
+                <li><a href="#beginner">Beginner Courses</a></li>
+                <li><a href="#intermediate">Intermediate Courses</a></li>
+                <li><a href="#advanced">Advanced Courses</a></li>
+                <li><a href="#applications">What You Can Do with Python</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Beginner Courses Section -->
+
+            <section id="beginner">
+                <h2>Beginner Courses</h2>
+
+                <div class="course-list">
+                    {% for beginner_course in beginner_courses %}
+
+                    <div class="course-item section" id="{{beginner_course.id}}">
+
+                        <h3 class="course-title" >{{beginner_course.title}}</h3>
+                        <p class="course-descpt"> {{beginner_course.description}}</p>
+                        <input type="hidden" class="course-id" name="course_id" value={{beginner_course.id}} >
+
+                 {% if  request.user.is_authenticated %}
+
+                        {% if beginner_course.id in task_completed %}
+                        <a class="btn coursemodal" id="completion"> <i class="fa-solid fa-circle-check"></i>  Task Completed </a>
+                        {% elif beginner_course.id in under_review %}
+                        <a class="btn coursemodal" id="reviewdisabled"> <i class="fa-solid fa-circle-info"></i> Under Review </a>
+                    {% elif beginner_course.id in enrolled_courses %}
+                        <a class="btn coursemodal" id="coursedisabled">Enrolled</a>
+
+
+                    {% else %}
+                        <a class="btn coursemodal">Enroll Now</a>
+                    {% endif %}
+                 {%else%}
+                 <a style="display:none ;">Enroll</a>
+                 {%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                   {%endfor%}
+                   </div>
+
+            </section>
+
+            <!-- Intermediate Courses Section -->
+            <section id="intermediate">
+                <h2>Intermediate Courses</h2>
+                <div class="course-list">
+                    {% for intermidiate_course in  intermidiate_courses %}
+                    <div class="course-item section" id="{{intermidiate_course.id}}">
+                        <h3 class="course-title">{{intermidiate_course.title}}</h3>
+                        <p class="course-descpt">{{intermidiate_course.description}}</p>
+                        <input type="hidden" class="course-id" name="course_id" value={{intermidiate_course.id}} >
+                        {% if  request.user.is_authenticated %}
+
+                        {% if intermidiate_course.id in task_completed %}
+                        <a class="btn coursemodal" id="completion"> <i class="fa-solid fa-circle-check"></i>  Task Completed </a>
+                        {% elif intermidiate_course.id in under_review %}
+                        <a class="btn coursemodal" id="reviewdisabled"> <i class="fa-solid fa-circle-info"></i> Under Review </a>
+                    {% elif intermidiate_course.id in enrolled_courses %}
+                        <a class="btn coursemodal" id="coursedisabled">Enrolled</a>
+
+
+                    {% else %}
+                        <a class="btn coursemodal">Enroll Now</a>
+                    {% endif %}
+                 {%else%}
+                 <a style="display:none ;">Enroll</a>
+                 {%endif%}
+
+                    </div>
+                    {%endfor%}
+                    </div>
+
+
+
+            </section>
+
+            <!-- Advanced Courses Section -->
+            <section id="advanced">
+                <h2>Advanced Courses</h2>
+                <div class="course-list">
+                    {% for advanced_course in  advanced_courses %}
+                    <div class="course-item section" id="{{advanced_course.id}}">
+                        <h3 class="course-title">{{advanced_course.title}}</h3>
+                        <p  class="course-descpt">{{advanced_course.description}}</p>
+                        <input type="hidden" class="course-id" name="course_id" value={{advanced_course.id}} >
+                        {% if  request.user.is_authenticated %}
+
+                        {% if advanced_course.id in task_completed %}
+                        <a class="btn coursemodal" id="completion"> <i class="fa-solid fa-circle-check"></i>  Task Completed </a>
+                        {% elif advanced_course.id in under_review %}
+                        <a class="btn coursemodal" id="reviewdisabled"> <i class="fa-solid fa-circle-info"></i> Under Review </a>
+                    {% elif advanced_course.id in enrolled_courses %}
+                        <a class="btn coursemodal" id="coursedisabled">Enrolled</a>
+
+
+                    {% else %}
+                        <a class="btn coursemodal">Enroll Now</a>
+                    {% endif %}
+                 {%else%}
+                 <a style="display:none ;">Enroll</a>
+                 {%endif%}
+
+                    </div>
+                    {%endfor%}
+                    </div>
+
+            </section>
+
+            <!-- Applications Section -->
+            <section id="applications">
+                <h2>What You Can Do with Python</h2>
+                <div class="applications-list">
+                    <div class="application-item">
+                        <h3 class="course-title">Web Development</h3>
+                        <p>Build dynamic websites and applications with frameworks like Django and Flask.</p>
+                    </div>
+                    <div class="application-item">
+                        <h3 class="course-title">Data Science</h3>
+                        <p>Analyze data and build machine learning models with Python libraries like Pandas, NumPy, and scikit-learn.</p>
+                    </div>
+                    <div class="application-item">
+                        <h3 class="course-title">Automation</h3>
+                        <p>Automate repetitive tasks and enhance productivity using Python scripts.</p>
+                    </div>
+                    <div class="application-item">
+                        <h3 class="course-title">Game Development</h3>
+                        <p>Create simple 2D games and learn the basics of game development using Pygame.</p>
+                    </div>
+                    <div class="application-item">
+                        <h3 class="course-title">Networking</h3>
+                        <p>Use Python for network automation, monitoring, and analysis with tools like Paramiko and Scapy.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+
+
+
+
+<!----------------------enrolment form submittion---------------->
+{% if  request.user.is_authenticated %}
+<div id="courseModal" class="enrollmodal">
+    <div class="enrollmodal-content">
+      <span id="enrolclose-btn" class="enrollclose">&times;</span>
+      <h2 id="course" >Course Enrollment Form</h2><br>
+      <p>Your details have been pre-filled, Please review and submit to enroll!</p>
+
+      <form id="enrollmentForm" action="/course_enrollment" method="POST">
+          {%csrf_token%}
+        <label for="username" style="color:#0056b3">Username: </label>
+        <input type="text" id="username" name="username" readonly  value="{{request.user.username}}" readonly disabled><br>
+        <label for="email" style="color:#0056b3">Email:</label>
+        <input type="email" id="email" name="email"  value="{{request.user.email}}" readonly disabled ><br>
+        <label for="course">Course:</label>
+
+        <input type="text" id="coursefield" name="courseEnroll" readonly>
+        <input type="hidden" id="courseidval" name="course_id" >
+
+        <label for="courseDescription">Course Description:</label>
+    <textarea id="course-descpt-val" name="courseDescription"  readonly ></textarea><br>
+
+
+          <button
+           class="enrolBtn" type="submit">
+           <i class="fa fa-spinner" aria-hidden="true" style="display: none;"></i>
+           <span class="btn-txt"> Submit</span>
+
+          </button>
+
+
+      </form>
+    </div>
+  </div>
+
+
+{%endif%}
+
+
+
+
+
+<!----------------------------poup notification --------------------------------------->
+
+
+
+
+
+    <!-- Footer Section -->
+    <div class="footer-bg">
+
+
+
+
+
+        <footer>
+
+                <ul class="social-icons">
+                    <li><a href="https://www.facebook.com/profile.php?id=100091470267419&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.twitter.com/pythoneer_001" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/samson-odetola-509657249" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <!-- Add more social links with Font Awesome icons as needed -->
+                  </ul>
+              <!-- Add more social links with Font Awesome icons as needed -->
+            </ul>
+            <p id="foot">
+            &copy; 2025 <b>Nexapy Technologies.</b> All rights reserved. </p>
+
+    <p ><a  style="color: #f82727" href="mailto:{{contact_email}}">Contact Us | Email</a></p>
+          </footer>
+      </div>
+
+
+
+
+
+    <script src="{% static  'js/courses.js'%}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

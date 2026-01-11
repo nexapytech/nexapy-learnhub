@@ -1,0 +1,86 @@
+
+/* Scrollable table styling */
+.scrollable-table {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+/* Add User Form Styling */
+.add-user-form {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.add-user-form h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #333;
+}
+
+.add-user-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.add-user-form input[type="text"],
+.add-user-form input[type="email"],
+.add-user-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* To include padding and border in the element's total width and height */
+}
+
+.add-user-form button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-user-form button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .add-user-form {
+        padding: 15px;
+    }
+
+    .add-user-form h2 {
+        font-size: 20px;
+    }
+
+    .add-user-form input[type="text"],
+    .add-user-form input[type="email"],
+    .add-user-form select,
+    .add-user-form button {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #274a61;
+            text-align: left;
+            font-size: 24px;
+        }
+        p {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .footer {
+            font-size: 12px;
+            color: #777777;
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nexapy LearnHub</h1>
+        <p>Hello <b>{{ user.username }}</b>,</p>
+        <p>{{ message }}</p>
+        <p>Best Regards,</p>
+        <p>PyLearn Hub Team</p>
+    </div>
+    <div class="footer">
+        <p>If you didn't log in, please ignore this email or contact support.</p>
+    </div>
+</body>
+</html>

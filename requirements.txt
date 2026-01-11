@@ -1,0 +1,13 @@
+django
+django-allauth
+six
+django-countries
+cryptography==45.0.5 
+python-decouple
+fontawesomefree==6.6.0 
+pillow
+PyMySQL==1.1.1 
+python-decouple==3.8 
+whitenoise
+pandas
+ 

@@ -1,0 +1,700 @@
+{%load static%}
+<!-- notifications.html -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Nexapy LearnHub | Notifications</title>
+      <meta charset="UTF-8">
+
+
+
+  <link rel="icon" href="{% static  'images/nexapytech.png' %}" sizes="32x32" >
+
+
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+
+  background-color: #274a61;
+
+}
+
+
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:auto;
+    margin-top:20px;
+
+    }
+ .notificationcontainer{
+    background-color: #fff;
+    width:700px;
+    padding:1rem 1rem;
+    border-radius:1rem;margin-bottom: 20px;
+    margin-bottom:70px
+
+
+
+ }
+ header{
+    display:flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+ }
+ .notificationheader{
+    display:flex;
+    align-items:center;
+    text-align: center;
+
+ }
+ #num-of-notif{
+    background-color:  #5cb1d8;
+    color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    width:30px;
+    height:30px;
+    border-radius:0.5rem;
+    margin-left:10px
+ }
+ #mark-as-read{
+
+    text-align: center;
+    align-items: center;
+    color:grey;
+    cursor:pointer;
+    transition: 0.6 ease;
+
+ }
+ #mark-as-read:hover{
+    color:black;
+ }
+ main{
+    display:flex;
+    flex-direction: column;
+    gap:1rem
+ }
+ .notificationcard{
+    display:flex;
+    align-items: center;
+    padding: 1rem;
+    padding-top:2px;
+    padding-bottom: 2px;
+    padding-left:1rem;
+    padding-right:1rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+    cursor: pointer;
+
+
+
+
+
+ }
+ .notificationcard img{
+    width:50px;
+    border-radius: 50%;
+
+
+
+ }
+
+ .description{
+    display:flex;
+    align-items:center;
+    text-align: center;
+ }
+
+ #description-content{
+    display: flex;
+     margin-left: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 20px;
+
+    color:#464242
+
+
+ }
+    .unread{
+        background-color: pink;
+    }
+
+
+.fa-circle-arrow-left{
+    color:#274a61;
+}
+
+
+
+.timecontainer{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor:pointer;
+    transition: 0.6 ease;
+
+    }
+#ellipsis {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px; /* Adjust padding as needed */
+}
+
+#ellipsis:hover {
+  color: #0c90b1; /* Button background color on hover */
+}
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+/* Dropdown content links */
+.dropdown-content a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Dropdown content links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.notificationcardcontainer{
+
+
+
+}
+::-webkit-scrollbar{
+  width:15px;
+}
+
+::-webkit-scrollbar-track{
+  background: #d1e5ff;
+}
+
+::-webkit-scrollbar-thumb{
+
+  background: linear-gradient(#642bff,#ff22e6);
+}
+.to-top{
+position: fixed;
+bottom: 16px;
+right:32px;
+width:50px;
+height:50px;
+border-bottom: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 40px;
+text-decoration: none;
+
+transition: all .4s;
+color:#fff;
+}
+.to-top:active{
+bottom:32px;
+pointer-events: auto;
+opacity: 1;
+
+}
+
+
+
+.toast{
+  display:none;
+  position: fixed;
+  border-radius: 5px;
+  top:25px;
+  right:30px;
+  background-color:#fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0,1);
+  border-left: 6px solid #5423da;
+  overflow: hidden;
+
+  transition: ease  2s
+}
+.toast .toast-content{
+  display:flex ;
+  align-items: center;
+
+}.toast-content .message{
+display: flex;
+flex-direction: column;
+text-align: left;
+align-items: left;
+margin:0 20px;
+}
+.text-1{
+  font-size: 16x;
+  font-weight: 700;
+  text-align: left;
+  align-items: center;
+  color:#333;
+  padding-bottom: 3px;
+
+}
+.text-2{
+  font-weight: 500;
+  color:#333}
+
+.check{
+display:flex;
+align-items: center;
+justify-content: center;
+height:35px;
+width:35px;
+background-color: #4070fa;
+color:#fff;
+font-size:15px;
+border-radius: 50%;
+margin-left: 10px;
+
+
+  }
+
+ .toast .close{
+position: absolute;
+top:1px;
+right:15px;
+padding:5px;
+cursor:pointer;
+
+
+  }
+
+  .toast .close:hover{
+    color:#811111
+  }
+
+  .toast .progress{
+    position: absolute;
+    bottom:0;
+    left:0;
+    height:3px;
+    width:100%;
+    background:#fff;
+
+
+
+  }
+  .toast .progress:before{
+content:'';
+position: absolute;
+bottom: 0;
+right:0;
+height:100%;
+width:100%;
+background-color:#4070f4;
+animation: progress 5s linear forwards;
+
+  }
+  .progress.active:before{
+  animation: progress 2s linear forwards;
+
+
+}
+@keyframes progress {
+  100%{
+    right:100%
+  }}
+  .message{
+   padding:15px;
+
+  }
+
+a{
+  text-decoration: none;
+}
+</style>
+<body  id="updated-content">
+
+    <!--<h1> <a href="/home"><i class="fa-solid fa-circle-arrow-left"></i></a>  Notifications</h1>-->
+
+    <div class="container" id="top" ><div class="notificationcontainer">
+            <header>
+                <div class="notificationheader ">
+                <h1><a href="/home"><i class="fa-solid fa-circle-arrow-left"></i></a> Notifications</h1>
+                <span id="num-of-notif"></span>
+
+
+            </div>
+
+
+            <form action="{%url 'notifications-allread' %}" id= "mark-as-all-read" method="POST">
+
+            <p id="mark-as-read">Mark as All Read</p>
+           </form>
+
+        </header>
+        <main>
+         {%if notifications%}
+                  {%for notification in notifications %}
+
+             <div class="notificationcardcontainer">
+           <div class="notificationcard  {% if not notification.is_notification_read%} unread {%endif%}  " id="notificationcard-{{ forloop.counter}}">
+            <form action="{% url 'notification-message' notification_id=notification.id_user %}" id="notif-message{{forloop.counter}}" method="POST">
+              {%csrf_token%}
+              <a target="_blank" href={{notification.link}} class="notification-link" data-post-id="{{notification.message_id}}">
+                <div style="text-align:left" class="description">
+                <img alt="photo" src="{%static 'images/python.png'%}" style="width:50px">
+                <span style="display:block; text-align:left" id="description-content">{{ notification.message|striptags |safe }}</span>
+
+              </div>
+            </a>
+              </form>
+                <div class="timecontainer">
+                 <p style="color:#504d4d">{{notification.time }}</p>
+
+                 <div class="dropdown">
+                  <i class="fa-solid fa-ellipsis" id="ellipsis-{{forloop.counter}}"></i>
+                  <div class="dropdown-content" id="dropdownContent-{{forloop.counter}}">
+                    <form action="{% url 'delete-notification' notification_id=notification.id_user %}" id="deletnotification-{{forloop.counter}}" method="POST">
+                    {%csrf_token%}
+                      <a id="deletenotif-{{ forloop.counter }}" class="deletenotif" >Delete</a>
+
+                    </form>
+                    <a target="_blank" href="{{notification.link}}" class="notification-link" data-post-id="{{notification.message_id}}">Open</a>
+
+                  </div>
+                </div>
+                <script>
+                   $(document).on('click',  "#notif-message{{forloop.counter}}", function(e){
+                  e.preventDefault();
+
+
+                  $.ajax({
+                      type:'POST',
+                      url:'{% url "notification-message" notification_id=notification.id_user %}',
+                      data:{
+                          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                      },
+                      success: function(data){
+                        if ('redirect' in data){
+                        window.location.href = data.redirect
+                        }
+
+                        else{
+                          alert(data.error)
+                        }
+
+
+                        }
+
+                  })
+                })
+
+               </script>
+
+                <script>
+                   $(document).on('click',  "#notif-message{{forloop.counter}}", function(e){
+                  e.preventDefault();
+
+
+                  $.ajax({
+                      type:'POST',
+                      url:'{% url "notification-message" notification_id=notification.id_user %}',
+                      data:{
+                          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                      },
+                      success: function(data){
+                        if ('redirect' in data){
+
+                        }
+
+                        else{
+                          alert(data.error)
+                        }
+
+
+                        }
+
+                  })
+                })
+
+               </script>
+
+
+
+
+                <script>
+                var deleteNotification{{ forloop.counter }}=document.getElementById("deletenotif-{{ forloop.counter }}")
+                var notificationcard{{ forloop.counter }}=document.getElementById("notificationcard-{{ forloop.counter }}")
+
+                $(document).on('click',  "#deletnotification-{{forloop.counter}}", function(e){
+                  e.preventDefault();
+
+                  $.ajax({
+                      type:'POST',
+                      url:'{% url "delete-notification" notification_id=notification.id_user %}',
+                      data:{
+                          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                      },
+
+                    success:function(data){
+
+                      if('success' in data){
+                        const notificationcard{{ forloop.counter }} = document.getElementById("notificationcard-{{ forloop.counter }}")
+                        notificationcard{{ forloop.counter }}.style.display='none'
+                        var toast = document.querySelector(".toast")
+                        var message = document.querySelector(".text-2")
+                        message.innerHTML = 'Notification Deleted'
+                        const newMessages= document.querySelectorAll('.unread')
+                        toast.style.display='block'
+                        setTimeout(() =>{
+                          toast.style.display='none'
+                        },5000)
+
+                      }
+                      else{
+                            alert('something went wrong')
+                      }
+
+
+                    }
+
+                    })
+                })
+
+
+
+                </script>
+                <!--------------------------------dropdown script------------------------>
+         <script>
+                var ellipsis{{forloop.counter}} = document.getElementById("ellipsis-{{forloop.counter}}");
+                var dropdownContent{{forloop.counter}} = document.getElementById("dropdownContent-{{forloop.counter}}");
+
+
+
+                // Toggle the visibility of the dropdown content when the ellipsis icon is clicked
+                 ellipsis{{forloop.counter}}.addEventListener("click", function() {
+                  if (dropdownContent{{forloop.counter}}.style.display=='block'){
+                    dropdownContent{{forloop.counter}}.style.display='none'
+
+
+                  }
+                  else{
+                    dropdownContent{{forloop.counter}}.style.display='block'
+
+
+                  }
+
+                });
+
+                // Close the dropdown when clicking outside of it
+                window.addEventListener("click", function(event) {
+                  if (!event.target.matches('.fa-ellipsis')) {
+                     dropdownContent{{ forloop.counter }}.style.display='none'
+                  }
+                });
+
+
+         </script>
+
+
+
+
+
+
+        </div>
+        </div>
+
+
+        {%endfor%}
+        {%else%}
+        <span id="description-content">your notificatioon will apprear here</span>
+        {%endif%}
+
+
+
+    </main>
+
+        </div>
+
+    </div>
+    <a href="#top" class="to-top"><i class="fa-solid fa-circle-chevron-up"></i></a>
+    <div class="toast">
+    <div class="toast-content">
+      <i class="fas fa-solid fa-check check"></i>
+      <div class="message">
+        <span class="text text-1">Success</span>
+        <span class="text text-2">your changes as been saved</span>
+
+
+      </div>
+      </div>
+     <!---<i class="fa-solid fa-xmark close"></i>--->
+     <div class="progress"></div>
+
+    </div>
+    <script>
+
+
+const totalUnreadMessages= document.querySelectorAll('.unread')
+const description= document.querySelectorAll('#description-content')
+const totalnotificationcount= document.querySelector('#num-of-notif')
+const markall = document.querySelector('#mark-as-all-read')
+totalnotificationcount.innerText =totalUnreadMessages.length
+markall.addEventListener('click', ()=>{
+  totalUnreadMessages.forEach((message) =>{
+
+    message.classList.remove('unread')
+
+
+
+
+  });
+
+
+
+
+
+})
+
+
+$(document).on('click',  "#mark-as-all-read", function(e){
+                  e.preventDefault()
+                  $.ajax({
+                      type:'POST',
+                      url:'{% url "notifications-allread" %}',
+                      data:{
+                          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                      },
+
+                    success:function(data){
+
+                      if('success' in data){
+                        var message = document.querySelector(".text-2")
+                        var toast = document.querySelector('.toast')
+                        message.innerHTML =  data.success
+                        toast.style.display='block'
+                        const newMessages= document.querySelectorAll('.unread')
+                        totalnotificationcount.innerText = newMessages.length
+
+                        setTimeout(() =>{
+                          toast.style.display='none'
+                        },5000)
+
+                      }
+
+
+
+                    }
+
+                    });
+                })
+
+
+</script>
+
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+    // Get all notification links
+    const notificationLinks = document.querySelectorAll('.notification-link');
+
+    notificationLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default anchor behavior
+
+            const postId = this.getAttribute('data-post-id'); // Get the post ID
+            const communityUrl = this.getAttribute('href'); // Get the base href
+
+            // Redirect to the community page with post ID anchor
+            window.location.href = `${communityUrl}#${postId}`;
+        });
+    });
+
+    // Function to scroll to an element smoothly
+    function scrollToElement(hash) {
+        const postElement = document.querySelector(hash);
+
+        if (postElement) {
+            // First, scroll to the element smoothly
+            postElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Adjust scroll position if needed
+            const headerOffset = 0; // Adjust this value if you have a fixed header
+            const elementPosition = postElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
+
+            // Use a timeout to ensure smooth scrolling
+            setTimeout(() => {
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 300); // Adjust timeout as necessary
+        } else {
+            console.error(`Element not found for hash: ${hash}`);
+        }
+    }
+
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+
+    if (hash) {
+        // Scroll to the post element on page load
+        scrollToElement(hash);
+    }
+});
+
+
+
+
+</script>
+
+
+
+
+
+
+
+ </body>
+ </html>
+
+

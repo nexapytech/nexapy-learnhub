@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.5;
+    }
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+    <h1 style="color: #274a61; text-align: left;">PyLearn Hub</h1>
+
+    <p>Hello <b>{{ user.username }}</b>,</p>
+
+    <p>This email was sent to you from the PyLearn Hub integrated system.</p>
+
+    <p>Click on the URL below to confirm and activate your account:</p>
+
+    <p>
+      <a href="https://{{ domain }}{% url 'verification' uidb64=uidb64 token=token %}" style="color: #1a73e8;">
+        Verify Email
+      </a>
+    </p>
+
+    <p>If the button above doesn't work, copy and paste the following URL into your browser:</p>
+
+    <p>https://{{ domain }}{% url 'verification' uidb64=uidb64 token=token %}</p>
+
+    <p>Best Regards,<br>
+    The PyLearn Hub Team</p>
+
+    <p><small>Note: You will be automatically redirected to the Sign In page when you confirm your email.</small></p>
+
+</body>
+</html>

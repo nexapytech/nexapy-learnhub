@@ -1,0 +1,86 @@
+{%load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static   'css/task.css' %}" >
+      <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to our Python Learning Platform  Pylearn HUB, where you can enhance your Python skills and connect with developers from around the world. Our comprehensive Python courses, live interactive classes, and a supportive community make it easy to learn and grow. Join us today to explore in-depth Python tutorials, ask questions, and participate in discussions with fellow learners. Whether you're a beginner or looking to sharpen your skills, our platform provides everything you need to succeed in your Python journey.">
+  <meta name="keywords" content="web development, python, blog, portfolio, pythoncourse, pythonbug, pythoncommunity, community, pythoncode, pythonbugfix ">
+  <meta name="author" content="pythoneer001">
+
+ <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+<!-- Title -->
+<title>Nexapy LearnHub</title>
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/nexapytech.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+
+
+
+</head>
+<body>
+    <div class="container">
+
+        <h1><a href="/home"><i class="fa-solid fa-circle-arrow-left"></i></a> Submit Your Python Task</h1><br>
+        <form id="taskForm" method="POST" action="/course_task" enctype="multipart/form-data">
+            {%csrf_token%}
+
+            <!-- Select Option for Course -->
+            <label for="course">Select Course:</label>
+            <select  name='courses' id="course"  required>
+                <option value="" disabled selected>Select a course</option>
+
+                {% for course in courses %}
+                <option >{{course.upper}}</option>
+                {%endfor%}
+            </select>
+
+            <!-- Upload File Input -->
+            <label for="taskFile">Upload your Python script:</label>
+            <input type="file" id="taskFile" name="taskFile" accept=".py" required>
+
+            <!-- Optional Task Description -->
+            <label for="taskDescription">Task Description (optional):</label>
+            <textarea id="taskDescription" name="taskDescription" rows="4" placeholder="Describe your task here..."></textarea>
+
+            <!-- Submit Button -->
+            <button  type="submit">
+                 <i class="fa fa-spinner"   aria-hidden="true" style="display:none;"></i>
+               <span class="taskbtn-txt"> Submit</span>
+            </button>
+        </form>
+    </div>
+
+    <script src="{% static  'js/coursetask.js'%}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    </body>
+    </html>
+

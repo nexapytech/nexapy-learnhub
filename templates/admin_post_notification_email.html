@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            font-size: 16px;
+            color: #333333;
+        }
+        .content p {
+            margin: 0 0 10px;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #777777;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            New Post on Nexapy LearnHub Community!
+        </div>
+        <div class="content">
+            <p>Hello <strong>{{username}}</strong></p>
+            <p>We wanted to let you know that our admin has just made a new post on Nexapy LearnHub  Community . Here are the details:</p>
+            <p> <strong>Description:</strong> <i> {{description}} </i> </p>
+            <p>You can view the post by clicking the button below:</p>
+            <a href="{{post_link}}" class="button">View Post</a>
+        </div>
+        <div class="footer">
+            <p>If you have any questions, feel free to reply to this email.</p>
+            <p>&copy; 2025 Nexapy Technologies. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

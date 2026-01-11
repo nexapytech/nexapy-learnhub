@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="{% static  'css/style.css'%}" >
+    <link rel="stylesheet" href="{%static  'css/signup.css' %}">
+    <link rel="stylesheet" href="{%static  'css/signin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+<!-- Title -->
+<title>Nexapy LearnHub</title>
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/nexapytech.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+
+
+   </head>
+<body>
+
+        <div class="header-element">
+        <div class="logo-left">
+            <h1 style=" color:#274a61">Nexapy LearnHub</h1>
+            </div>
+         <div class="middle-header">
+            <a href="/courses"><button class=" button cources">Courses</button>  </a>
+            <a href="https://www.python.org/doc/"> <button style="white-space: nowrap;"class="button doc">Python Doc.</button> </a>
+             <a href="mailto:{{contact_email}}"> <button class="button support">Support</button> </a>
+
+         </div>
+
+        <div class="buttons">
+          <div class="dropdownonmouse">
+          <i id="mobile-menu" class="fa-solid fa-bars"></i>
+          <!--------------------------- dropdown content for mobile----------------------------------->
+
+                <div class="dropdown-content">
+                  <a href="/courses"><i class="fa-solid fa-book-atlas"></i> Courses </a>
+                  <a href="https://www.python.org/doc/"><i class="fa-solid fa-file-code"></i> Python Doc.</a>
+                  <a href="mailto:{{contact_email}}"><i class="fa-solid fa-people-group">  </i> <span>Support</span></a>
+                  <a class="openModal"  style="cursor: pointer;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign In</a>
+                  <a class="openModal2" style="cursor: pointer; color:#2d93ff; font-weight:bolder"><i class="fa-solid fa-arrow-up-from-bracket "></i> Join Us</a>
+                </div>
+                </div>
+
+
+            <button style="white-space: nowrap"   class="openModal signin-button  auth" >Sign In</button>
+           <button  class="openModal2 join-button join auth">Join</button>
+        </div>
+        </div>
+        <!-----------------------------sign up pop up------------------------------------------------>
+
+        <div class="signupmodal">
+    <div class="signupmodal-content">
+      <span id="signupclose" class="signupclose-btn">&times;</span>
+      <h2 id="col" style="color:#007bff; text-align:center">SIGN UP</h2><br>
+
+      <form id="signupform" action="/signup" method="POST">
+          {%csrf_token%}
+        <label for="username" style="color:#0056b3">Username:</label>
+        <input type="text" id="username" name="username" maxlength="15"><br>
+        <label for="email" style="color:#0056b3">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+          <label for="password" style="color:#0056b3">Password:</label>
+        <input type="password" id="password1" name="password1" required><br>
+          <label for="password2" style="color:#0056b3">Confirm Password:</label>
+        <input type="password" id="password2" name="password2" required>
+        <!-- Checkbox to toggle password visibility, checked by default -->
+        <label for="show_password" >
+    <span><input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"></span>
+    Show Password
+</label>
+
+
+        <div class="alert" style="color: rgb(138, 30, 30);"> </div><br>
+
+
+          <p style="color:rgb(73, 81, 83)">By signing up, you agree to our <span><a href="{% static 'pylearnhub-terms-and-condition.pdf'%}">Terms of Service</a></span></p><br>
+
+
+        <!--<i class="fa fa-spinner" aria-hidden="true"></i> -->
+
+          <button
+           class="signupBtn" type="submit">
+           <i class="fa fa-spinner" aria-hidden="true" style="display: none;"></i>
+           <span class="signupbtn-txt"> Sign Up</span>
+
+          </button>
+
+
+      </form>
+    </div>
+  </div>
+
+
+<!-------------------------------------sign in ------------------------------------->
+        <div id="myModal2z" class="signinmodal">
+    <div class="signinmodal-content">
+      <span id= "signinclose"class="close-btn">&times;</span>
+      <h2 style="color:#007bff; text-align:center">LOGIN</h2><br>
+      <form action="/signin" id="signinForm" method="POST">
+          {% csrf_token %}
+          <label for="username" style="color:#0056b3">Username:</label>
+    <input type="text" id="susername" name="susername" placeholder="Enter your username" required/><br>
+    <label for="password" style="color:#0056b3">Password:</label>
+    <input type="password" class="signin-password"id="spassword" name="spassword" placeholder="Enter password" required>
+    <label for="showPassword">
+    <span>
+        <input type="checkbox" id="showSignInPassword" onclick="togglePasswordVisibilitySignin()">
+    </span>
+    Show Password
+</label>
+    <div class="signin-alert" style="color: rgb(138, 30, 30);"> </div><br>
+    <button type="submit">
+        <i class="fa fa-spinner  signInIcon" aria-hidden="true" style="display: none;"></i>
+        <span class="signbtn-txt"> Sign In</span>
+    </button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!----------------------------main body------------------------------------------->
+   <div class="main-bg">
+        <h1>Learn Python <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></h2>
+        <h1>Connect with Developers <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></hr>
+        <h1>Join Community <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></h1>
+        <h2 >Welcome to our Python Learning Platform!</h2>
+        <p>Explore our courses and join live classes to enhance your Python skills.</p>
+        <section id="features"><br>
+            <h3 >Key Features</h3>
+            <ul>
+                <li>Comprehensive Python Courses</li>
+                <li>Live Interactive Classes</li>
+                <li>Engage in a Supportive Learning Community</li>
+                <li>Ask Questions and Participate in Discussions</li>
+            </ul>
+        </section>
+
+
+
+
+        </div>
+
+
+        <section id="get-started">
+
+            <h3 style="color: #274a61;">Get Started</h3>
+            <p style="color: #274a61;">Ready to embark on your Python learning journey?<br>Sign up for an account and start exploring our courses today!</p>
+            <button id="joinModal2"  class="join join-button get-btn openModal2">Join Now</button>
+
+        </section>
+
+        <div class="footer-bg">
+            <footer>
+                <ul class="social-icons">
+                  <li><a href="https://www.facebook.com/profile.php?id=100091470267419&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                  <li><a href="https://www.twitter.com/pythoneer_001" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="https://www.linkedin.com/in/samson-odetola-509657249" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                  <!-- Add more social links with Font Awesome icons as needed -->
+                </ul>
+                &copy; 2025 <b>Nexapy Technologies.</b> All rights reserved.
+              </footer>
+          </div>
+<script src="{%static  'js/signup.js' %}?v=1.1"></script>
+<script src="{%static   'js/signin.js' %}?v=1.1"></script>
+
+<script src="{%static 'js/onlydropdown.js'%}?v=1.1"></script>
+
+
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+</html>

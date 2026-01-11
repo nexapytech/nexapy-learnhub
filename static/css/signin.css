@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+   
+    font-family: 'Poppins', sans-serif;
+}
+  
+  .signinmodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+  }
+  
+  
+  
+  .signinmodal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+  }
+  .close-btn {
+    font-size: 30px;         /* Adjusts the size of the '×' symbol */
+    color: #333;             /* Sets the color of the symbol */
+    cursor: pointer;         /* Changes the cursor to a pointer on hover */
+                                   /* Positions the button relative to its container */
+                             /* Adjust the top position */
+    float: right;                         /* Adjust the right position */
+    background-color: transparent;  /* No background color */
+    border: none;            /* Removes any default border */
+    outline: none;           /* Removes the default outline when focused */
+    font-weight: bold;       /* Makes the symbol bold */
+    transition: color 0.3s;  /* Smooth transition for hover effects */
+}
+
+.close-btn:hover {
+    color: #e00404;              /* Changes color when hovering over the button */
+}
+
+.close-btn:focus {
+    outline: none;           /* Ensures no outline appears when focused */
+}
+

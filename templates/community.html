@@ -1,0 +1,826 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{%static 'css/createpost-styles.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <title>Nexapy LearnHub | Community</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/community.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/pylearn2024.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+</head>
+<style>
+
+
+
+
+
+
+
+</style>
+
+<body>
+
+            <header>
+                <div  class="header_inner">
+                    <div class="left-side">
+
+                     <div id="pylearn" style="display:none">Nexapy LearnHub </div>
+                        <!-- Logo -->
+                        <div id="logo" class=" uk-hidden@s">
+
+                        </div>
+
+                        <!--<div class="triger" uk-toggle="target: #wrapper ; cls: sidebar-active">
+                            <i class="uil-bars"></i>
+                        </div>-->
+
+                        <div class="header_search">
+                             <input type="text" id="search-input" placeholder="Search for username..." />
+
+                            <div class="icon-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="right-side lg:pr-4">
+                        <div id="app-refresh-container">
+                            <i class="fa-solid fa-arrows-rotate" id="app-refresh-icon"></i>
+                          </div>
+
+
+                        <button id="next-match-button" style="display: none;">Next Match</button>
+                            <form style="margin-right: 20px;" id="filterForm"  method="POST" action="{% url 'filter_post' %}">
+                                {%csrf_token%}
+                                <select name="filter_time" onchange="document.getElementById('filterForm').submit();">
+                                    {% if user_profile.filter_time %}
+                                    {% if user_profile.filter_time == "1" %}
+                                    <option value="1" selected> Anytime </option>
+                                    <option value="30"> Older Than 1 Month </option>
+                                    <option value="90"> Older Than 3 Month </option>
+                                    <option value="360"> Older than 1 year</option>
+                                    {% elif user_profile.filter_time == "30" %}
+                                    <option value="30" selected> Older than 1 Month </option>
+                                    <option value="1"> Anytime</option>
+                                    <option value="90">  Older than 3 Month </option>
+                                    <option value="360"> Older than 1  Year </option>
+                                    {% elif user_profile.filter_time == "90" %}
+                                    <option value="90" selected> Older than 3 Month </option>
+                                    <option value="1" > Anytime </option>
+                                    <option value="30">  Older than 1 Month </option>
+                                    <option value="360"> Older than 1  Year </option>
+
+                                    {% elif user_profile.filter_time == "360" %}
+                                    <option value="360" selected> Older than 1 Year </option>
+                                    <option value="1" > Anytime </option>
+                                    <option value="90"> Older than 1 Month </option>
+                                    <option value="30"> Older than 1 Month </option>
+
+
+
+
+                                    {%endif%}
+
+
+
+                                    {%endif%}
+                                </select>
+
+
+
+
+                        </form>
+
+
+                         <!-- Notification -->
+
+
+                         <a href="/notifications"><i class="fa-solid fa-bell"></i><span class="{% if notificationallcount > 0 %} icon_badge {%endif%}">{% if notificationallcount > 0 %}{{notificationallcount}} {%endif%}</span></a>
+
+
+
+
+
+
+
+                        <!-- profile -->
+                        <div style="font-size: 30px;">
+                        <a href="#">
+                            <img style="width: 35px; height: 35px; object-fit: cover;" src="{{ user_profile.profileimg.url }}" class="header-avatar" alt="">
+                        </a>
+                        </div>
+                        <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
+                            <ul>
+                                <li><a href="accounts"> Account Setting </a> </li>
+                                <li><a href="/courses">Courses</a> </li>
+                                <li><a href="/home"> Home </a> </li>
+                                <li><a href="/logout"> Log Out</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+            <div class="container m-auto">
+
+                <!--<h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> Feed </h1>--->
+
+                <div style="margin-bottom:150px; margin-top: 60px;" class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
+
+                    <!-- left sidebar-->
+                    <div class= "space-y-5 flex-shrink-0 lg:w-7/12">
+
+
+                    {%for unique, all_post in posts.items   %}
+
+
+
+
+
+                        <!-- post 1-->
+                        <div   class="bg-white shadow rounded-md  -mx-2 lg:mx-0">
+
+                            <!-- post header-->
+                            <div class="flex justify-between items-center px-4 py-3">
+                                <div class="flex flex-1 items-center space-x-4">
+                                    <a href="#">
+
+                                        {%if all_post.count == 1%}
+
+                                        {% for post in all_post %}
+                                        {% for  post_profile in post_profiles%}
+                                        {%if post.user == post_profile.user%}
+                                        <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                            <img  style="object-fit: contain;" src="{{post_profile.profileimg.url}}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                        </div>
+                                        {%endif%}
+                                        {%endfor%}
+
+                                        {%endfor%}
+                                        {%else%}
+                                        {% with post=all_post.first %}
+                                        {% for  post_profile in post_profiles%}
+                                        {%if post.user == post_profile.user%}
+                                        <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                            <img style="object-fit: contain;"  src="{{post_profile.profileimg.url}}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                        </div>
+
+                                        {%endif%}
+                                        {%endfor%}
+
+
+                                        {%endwith%}
+
+
+
+
+                                        {%endif%}
+
+                                    </a>
+
+
+
+                                    {%if all_post.count == 1%}
+                                    {% for post in all_post %}
+                                    <div class="section" id="{{post.post_id}}">
+                                    <span class="block capitalize font-semibold "> {{post.user.username}} </span>
+                                    <div data-time="{{ post.created_at|date:'c' }}">{{post.created_at}} UTC </div>
+                                    </div>
+                                    {%endfor%}
+
+
+                                    {% else %}
+                                            {% with post=all_post.first %}
+                                            <div class="section" id="{{post.post_id}}">
+
+                                            <span class="block capitalize font-semibold "> {{post.user.username}} </span>
+                                            <div data-time="{{ post.created_at|date:'c' }}">{{post.created_at}} UTC </div>
+                                            </div>
+                                            {% endwith %}
+
+                                    {% endif %}
+
+
+
+                                </div>
+                              <div>
+
+                                {% with post=all_post.first %}
+
+                               {% if post.user == request.user or request.user.is_staff %}
+                                <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 "></i> </a>
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100  " uk-drop="mode: hover;pos: top-right">
+
+                                    <ul class="space-y-1">
+
+                                      <li>
+                                          <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md ">
+                                           <i class="uil-share-alt mr-1"></i> Share
+                                          </a>
+                                      </li>
+
+
+                                      <li>
+                                        <hr class="-mx-2 my-2 ">
+                                      </li>
+                                      <li>
+                                        <form method="POST" id="deletepost" action="{% url 'delete_post' %}">
+                                            <input type="hidden" name="post_id" value="{{post.group_data}}" >
+                                            {%csrf_token%}
+                                         <button style= "cursor:pointer" type="submit"><a class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md ">
+                                           <i class="uil-trash-alt mr-1"></i>  Delete
+                                          </a>
+                                          </button>
+                                          </form>
+                                      </li>
+                                    </ul>
+
+
+                                </div>
+                                {%endif%}
+                                {%endwith%}
+                              </div>
+                            </div>
+
+                            {%if all_post.count == 1%}
+
+                                        {% for post in all_post %}
+
+                                        <p style="padding:20px;  white-space: pre-wrap; /* Preserve spaces and line breaks */;"><strong>{{post.caption}}</strong></p>
+
+                                        <div class="row">
+
+                                <div class="column" style="flex-basis: 100%;" >
+                                    <div uk-lightbox>
+                                        {% if post.file_uploaded %}
+                                        {% with filename=post.file_uploaded.url %}
+
+                                        {% if filename|lower|slice:'-4:' == '.png' or filename|lower|slice:'-5:' == '.jpeg' or filename|lower|slice:'-5:' == '.webp' or filename|lower|slice:'-4:' == '.jpg' %}
+                                        <a href="{{post.file_uploaded.url}}">
+                                            <img style="width:100% ;
+                                            background-size: cover; max-height:600px ;"src="{{post.file_uploaded.url}}" alt="">
+
+                                        </a>
+                                        {%else%}
+                                        <div class="download_url" hidden>{{post.file_uploaded.url}}</div>
+                                        <div class="file-icon"><div class="file-extension"></div></div>
+
+
+
+                                            {% endif %}
+
+                                            {% endwith %}
+                                            {%endif%}
+
+
+
+                                  </div>
+                                  </div>
+
+
+                                </div>
+
+
+                              {%endfor%}
+
+                              {%endif%}
+
+                              {%if all_post.count == 2 or all_post.count == 4%}
+
+                              {% with post=all_post.first %}
+                              <p style="padding:20px; text-align: justify;"><strong>{{post.caption}}</strong></p>
+                              {%endwith%}
+
+                                <div class="row">
+                                    {% for post in all_post %}
+
+
+                                    <div class="column" style="flex-basis: 49.5%;" >
+
+                                            <a href="{{post.file_uploaded.url}}" class="flex items-center space-x-2 flex-1 justify-end" download >
+                                                <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="25" height="15" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/></g></svg>
+
+                                            </a>
+
+
+                                            <div uk-lightbox>
+                                            <a href="{{post.file_uploaded.url}}" >
+                                                <img class="post-img" src="{{post.file_uploaded.url}}" alt="">
+                                        </a>
+                                    </div>
+                                  </div>
+
+
+
+
+
+                                        {%endfor%}
+                                    </div>
+
+
+
+
+                                    {%endif%}
+
+                                    {%if all_post.count == 3  or  all_post.count == 5 %}
+
+                                    {% with post=all_post.first %}
+                                    <p style="padding:20px; text-align: justify;"><strong>{{post.caption}}</strong></p>
+                                    {%endwith%}
+
+                                <div class="row">
+                                    {% for post in all_post %}
+                                    <div class="column " style="flex-basis: 33%;" >
+
+                                    <a href="{{post.file_uploaded.url}}" class="flex items-center space-x-2 flex-1 justify-end" download >
+                                        <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="25" height="15" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/></g></svg>
+
+                                    </a>
+
+
+                                        <div uk-lightbox>
+                                            <div class="img-container">
+
+                                            <a  href="{{post.file_uploaded.url}}">
+                                                <img class="post-img3-5" src="{{post.file_uploaded.url}}" alt="">
+
+                                            </a>
+                                        </div>
+
+
+                                        </div>
+
+                                        </div>
+
+                                        {%endfor%}
+                                    </div>
+
+
+
+
+                                    {%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div class="py-3 px-4 space-y-3">
+
+                                <div class="flex space-x-4 lg:font-bold">
+                                    <form action="{% url 'like_post' %}" id="LikePost" method="POST">
+                                        {% csrf_token %}
+                                    {% with post=all_post.first %}
+                                     <input type="hidden" value="{{ post.post_id }}"  name="post_id" id="post-id">
+                                     <button onclick="likepost(this)" type="submit" class="flex items-center space-x-2">
+                                        <div class="p-2 rounded-full text-black">
+
+                                            {% with like_post=like_posts %}
+
+
+                                            {% if post.post_id|stringformat:'s' in liked_post_ids %}
+
+
+
+                                            <svg id="like_post" style="color:blue"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="25" height="25" class="">
+                                                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                            </svg>
+
+                                             {%else%}
+                                            <svg id="like_post" style="color:black"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="25" height="25" class="">
+                                                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                            </svg>
+                                            {%endif%}
+
+
+
+
+                                            {%endwith%}
+
+
+
+                                        </div>
+                                    </button>
+                                    {%endwith%}
+                                    </form>
+
+
+                                    </a>
+                                    {% if all_post.count == 1 %}
+                                    {% for  post in  all_post %}
+                                    {% if post.file_uploaded %}
+                                    <a href="{{post.file_uploaded.url}}" class="flex items-center space-x-2 flex-1 justify-end" download>
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="25" height="25" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/></g></svg>
+
+                                    </a>
+                                    {%endif%}
+                                    {%endfor%}
+
+
+                                    {%endif%}
+                                </div>
+                                {% with post=all_post.first %}
+                                 {%if post.no_of_likes == 0%}
+                                 <p>no likes</p>
+                                 {% elif post.post_id|stringformat:'s' in liked_post_ids and  post.no_of_likes == 1 %}
+                                 Liked  by <strong>you </strong>
+
+                                 {% elif post.post_id|stringformat:'s' in liked_post_ids and  post.no_of_likes == 2 %}
+                                 Liked  by <strong>you and {{post.no_of_likes|add:-1}} person </strong>
+                                 {% elif post.post_id|stringformat:'s' in liked_post_ids and  post.no_of_likes == 3 %}
+                                 Liked  by <strong>you and {{post.no_of_likes|add:-1}} people </strong>
+
+                                 {%elif post.no_of_likes == 1%}
+                                 <div class="">
+                                    Liked  by <strong> {{post.no_of_likes}} person</strong>
+                                </div>
+                                {%else%}
+                                <div class="">
+                                    Liked  by <strong> {{post.no_of_likes}} people</strong>
+                                </div>
+
+
+
+
+                                 {%endif%}
+
+
+                                {%endwith%}
+
+
+                                <div  class="border-t pt-4 space-y-4 ">
+
+
+                                </div>
+                                <div class="comment">
+                                {%for post in all_post%}
+
+
+                                {%for comment in post.comments.all reversed%}
+
+                                <div>
+
+
+                                <div class="flex comment-margin"  >
+
+                                    {% for  post_profile in post_profiles %}
+                                    {%if post_profile.user == comment.user%}
+
+                                    <div class="w-10 h-10 rounded-full relative flex-shrink-0">
+                                        <img style="object-fit: contain;" src="{{post_profile.profileimg.url}}" alt="" class="absolute h-full rounded-full w-full">
+                                    </div>
+                                    {%endif%}
+                                    {%endfor%}
+
+                                    <div style=width:200px;  class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  ">
+
+
+
+
+                                        <div id="comment-preview-container  " class="comment-preview-container "> <div style="color: #777f94; padding:5px;text-align: left;"><small><strong>{{comment.user.username}}</strong></small> </div>
+
+                                        {%if comment.file_uploaded %}
+                                        {% with filename=comment.file_uploaded.url %}
+                                        <a href="{{comment.file_uploaded.url}}" class="flex items-center space-x-2 flex-1 justify-end" download >
+                                            <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="25" height="15" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><g fill="currentColor"><path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v6h-2a.5.5 0 0 0-.354.854l2.5 2.5a.5.5 0 0 0 .708 0l2.5-2.5A.5.5 0 0 0 10.5 7.5h-2v-6z"/></g></svg>
+
+                                        </a>
+                                        {% if filename|slice:'-4:' == '.png' or filename|slice:'-4:' == '.jpeg' or  filename|slice:'-4:' == '.webp'  %}
+
+                                        <div class="image-comment">
+
+                                            <div uk-lightbox>
+                                            <a href="{{comment.file_uploaded.url}}">
+                                            <div style="text-align: left;">{{comment.text_comment}}</div>
+                                            <img src="{{comment.file_uploaded.url}}" alt="">
+                                            <div style="font-weight:100;font-size: smaller; padding-top:10px;"  data-time="{{ post.created_at|date:'c' }}"><i>{{comment.created_at}} UTC </i></div>
+
+
+
+                                        </a>
+                                        </div>
+
+                                        </div>
+
+
+                                        {%else%}
+
+                                        <div style="text-align: left;">{{comment.text_comment}}</div>
+                                        <div class="comment-file-icon"  ><div class="comment-file-extension"></div></div>
+                                        <div class="comment-download_url" hidden>{{comment.file_uploaded.url}}</div>
+                                        <div style="font-weight:100;font-size: smaller; padding-top:10px;"  data-time="{{ post.created_at|date:'c' }}"><i>{{comment.created_at}} UTC </i></div>
+
+                                        {%endif%}
+                                        {%endwith%}
+                                        {%else%}
+                                        <div class="comment-section-container">
+                                        <div  style="white-space: pre-wrap;" id="comment-section">{{comment.text_comment}}</div>
+                                        <div style="font-weight:100;font-size: smaller;"  data-time="{{ post.created_at|date:'c' }}"><i>{{comment.created_at}} UTC </i></div>
+                                        </div>
+                                        {%endif%}
+
+
+
+                                    </div>
+                                    </div>
+
+
+                                        <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 "></div>
+                                    </div>
+                                </div>
+
+
+                                  {%endfor%}
+                                  {%endfor%}
+                                  </div>
+                                <div class="rounded-full rounded-md relative ">
+                                    <form action="{%url  'create_comment' %}" method="POST"  id="createcomment">
+                                                    {%csrf_token%}
+                                        <div class="comment-content" >
+                                            {% with post=all_post.first %}
+                                        <input type="hidden" value="{{ post.post_id }}"  name="post_id" >
+
+                                        <textarea  placeholder="write a comment " name="comment" id ="comment-input" maxlength="2000"></textarea>
+                                      </div>
+                                    <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                                        <a style="cursor: pointer;" data="{{ post.post_id}}" id="postdata"><i class="fa-solid fa-file-image comment-openModalBtn" style="font-size:20px"></i></a>
+                                       {%endwith%}
+
+
+                                         <button type="submit">
+                                            <img class="comment-paper-plane" style="display: none; width:20px"  src="https://img.icons8.com/ios-glyphs/30/paper-plane.png" alt="Send"/>
+                                        </button>
+                                    </div>
+                                    </form>
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        {%endfor%}
+                        <div id="loadmore-container">
+                       <form method="POST", id="loadmore" action="{% url 'loadmore' %}">
+                        {%csrf_token%}
+                        <button type="submit"> Load More </button>
+                       </form>
+
+                       </div>
+
+
+
+
+
+
+
+                        <!----------------------------------mutiple post ----------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+    </div>
+
+
+    <div class="chat-container-unique">
+        <form  action="{% url 'create_post'  %}"  method="POST" id="ChatBox" >
+            {%csrf_token%}
+
+
+        <div class="chat-content" id = "chatBox">
+            <div id="word-count-status">
+                <span id="char-counter">0</span>/2000
+              </div>
+
+
+
+       <textarea placeholder="write a post" contenteditable="true"  name="chatmsg" id ="chatInput" class="custom-textarea" maxlength="2000"></textarea>
+
+    </div>
+        <div class="image-container">
+            <a id="openModalBtn" style="cursor: pointer;"><i class="fa-solid fa-file-image" id="image-file" style="font-size:20px"></i></a>
+            <button type="submit">
+                <img class="paper-plane" style="width:22px"  src="https://img.icons8.com/ios-glyphs/30/paper-plane.png" alt="Send"/>
+            </button>
+        </form>
+        </div>
+
+   </div>
+
+
+
+
+
+
+</div>
+<!-------------------------------------create comment post ------------------------------->
+
+<div id="comment-modal" class="comment-modal">
+    <div class="comment-modal-content">
+        <div class="comment-closemdal">
+        <span class="comment-close-btn">&times;</span>
+    </div>
+
+</div>
+
+<div class="post-container">
+
+    <div class="tweet-box">
+        <form action="{%url 'create_comment' %}"  id=createPostComment method="POST" enctype="multipart/form-data">
+            {%csrf_token %}
+
+
+            <input type="hidden"  class="comment-img-file-post_id"  name="post_id" >
+
+
+        <div class="tweet-header">
+
+            <img src="../static/images/bg-image.png" alt="Profile Image" class="profile-img">
+
+
+
+            <textarea id="tweet-input" class="comment-input" name="comment" placeholder="post a comment " rows="3" maxlength="300" ></textarea>
+  </div>
+        <div class="image-video-upload">
+            <div id="comment-file-preview-container" class="comment-file-preview-container"> </div>
+
+        </div>
+  <div class="tweet-footer">
+      <div class="icons">
+          <input id="comment-codefile-input" style="display:none;" class="comment-image-post" name="comment-image-file" type="file" accept=".doc, .docx, .py, .txt, .ipynb, .csv, .xlsx, .pdf" >
+          <input id="comment-image-input" style="display:none;" class="comment-image-post" name="comment-image-file" type="file" accept="image/jpeg, image/png ,image/webp, image/bmp," >
+
+          <i class="fa-solid fa-image icon"  id="comment-upload-button"> </i>
+
+          <i class="fa-solid fa-file-code icon " id="comment-codefile-icon"></i>
+
+
+      </div>
+        <button type="submit" id="comment-tweet-button" disabled>
+          <i class="fa fa-spinner" aria-hidden="true" style="display:none;"></i>
+          <span id="commentText">Comment</span></button>
+  </div>
+
+
+
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!----------------------------create post ------------------------------------------------>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <div class="closemdal">
+        <span class="close-btn">&times;</span>
+    </div>
+<div class="progress"></div>
+</div>
+
+<div class="post-container">
+
+    <div class="tweet-box">
+        <form  action="{% url 'create_post' %}" id="createNote" method="post" enctype="multipart/form-data">
+            {%csrf_token %}
+
+        <div class="tweet-header">
+
+            <img src="../static/images/bg-image.png" alt="Profile Image" class="profile-img">
+
+            <textarea id="tweet-input" name="caption" placeholder="What's happening?" rows="3" maxlength="300" required></textarea>
+  </div>
+        <div class="image-video-upload">
+            <div id="file-preview-container" class="file-preview-container"> </div>
+
+        </div>
+  <div class="tweet-footer">
+      <div class="icons">
+          <input id="codefile-input" style="display:none;" class="image-post" name="input-file" type="file" accept=".doc, .docx, .py, .txt, .ipynb, .csv, .xlsx, .pdf, .zip, .rar" >
+          <input id="image-video-input" style="display:none;" class="image-post" name="input-imgvid-code" type="file" accept="image/jpeg, "image/jpe", "image/png", ,image/webp, image/bmp," multiple>
+
+          <div id="file-preview-container" name="all-files" ></div>
+          <i class="fa-solid fa-image icon"  id="upload-button"> </i>
+
+          <i class="fa-solid fa-file-code icon " id="codefile-icon"></i>
+
+
+      </div>
+      <button type="submit" id="tweet-button" disabled>
+          <i class="fa fa-spinner post-icon" aria-hidden="true" style="display:none;"></i>
+          <span id="postText">Post</span></button>
+  </div>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+</body>
+
+
+<!------------------------------------endn----------------------------------------->
+
+ <!-- Scripts
+    ================================================== -->
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/all-js.js' %}?v=1.1"></script>
+
+    <script src="{% static 'js/create_post.js' %}?v=1.1"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+
+</html>

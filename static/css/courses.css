@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap');
+
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Font */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background:#ffffff;
+    color: #274a61;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 20px;
+}
+
+/* Navigation Bar */
+nav {
+    background: #274a61;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+.course-item p{
+    text-align:justify;
+}
+/* Section Headers */
+h2 {
+    background-color: #0888ff;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Course List */
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.course-item {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+
+.course-item h3 {
+    margin-bottom: 15px;
+}
+
+.course-item p {
+    margin-bottom: 20px;
+}
+
+
+
+.course-item .btn {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.course-item .btn:hover {
+    background: #e8491d;
+}
+#coursedisabled {
+  
+  color: gray;
+  background-color: #d6d6d6;
+  pointer-events: none; /* Prevents clicking */
+  cursor: not-allowed; /* Shows a disabled cursor */
+  text-decoration: none; /* Optional: remove underline */
+}
+
+#reviewdisabled{
+  color: #fff;
+  background-color: #206774;
+  pointer-events: none; /* Prevents clicking */
+  cursor: not-allowed; /* Shows a disabled cursor */
+  text-decoration: none; /* Optional: remove underline */
+}
+#completion{
+  color: #fff;
+  background-color: #076d18;
+  pointer-events: none; /* Prevents clicking */
+  cursor: not-allowed; /* Shows a disabled cursor */
+  text-decoration: none; /* Optional: remove underline */
+
+}
+
+/* Applications List */
+.applications-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.application-item {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+footer {
+    background-color: #274a61;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+  }
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+  }
+
+/*------------------------------------ pop up modal ----------------------------------------------------------*/
+.notifymodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+
+
+.notifymodal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .enrollmodal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+  }
+  #course{
+    background: none;
+    color: #007bff;
+    margin: 0;
+
+    
+
+  }
+  .enrollmodal p{
+
+    font-size:15px;
+    font-weight: bolder;
+    padding:0 5px 5px  5px;
+  }
+  
+  
+  .enrollmodal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+ 
+  
+  
+
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button[type="submit"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #0056b3;
+    border-radius: 4px;
+  
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .fa-spinner{
+    animation: animate 1s ease infinite;
+  
+  }
+  @keyframes animate {
+    0%{transform: rotate(0turn);
+  }
+  100%{
+    transform: rotate(1turn)
+  }
+  
+  }
+  
+  .enrollclose {
+    font-size: 30px;         /* Adjusts the size of the '×' symbol */
+    color: #333;             /* Sets the color of the symbol */
+    cursor: pointer;         /* Changes the cursor to a pointer on hover */
+                                   /* Positions the button relative to its container */
+                             /* Adjust the top position */
+    float: right;                         /* Adjust the right position */
+    background-color: transparent;  /* No background color */
+    border: none;            /* Removes any default border */
+    outline: none;           /* Removes the default outline when focused */
+    font-weight: bold;       /* Makes the symbol bold */
+    transition: color 0.3s;  /* Smooth transition for hover effects */
+  }
+  
+  .enrollclose:hover {
+    color: #e00404;              /* Changes color when hovering over the button */
+  }
+  
+  .enrollclose:focus {
+    outline: none;           /* Ensures no outline appears when focused */
+  }
+
+ #course-descpt-val {
+    width: 100%;  /* Make the textarea fill the width of the parent */
+    height: 200px;  /* Set a fixed height */
+    font-size: 16px;  /* Adjust font size to make sure content is readable */
+    line-height: 1.5;  /* Set line height to control spacing between lines */
+    padding: 10px;  /* Add padding to ensure text is not touching edges */
+    border: 1px solid #ccc;  /* Border style */
+    box-sizing: border-box;  /* Include padding and border in the element's total width and height */
+    resize: none;  /* Prevent resizing */
+    text-align: left;
+}
+  
+  
+
+
+
+
+
+
+
+@media (min-width: 700px) and (max-width: 900px) {
+
+    header h1 {
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+    
+    .container ul li a{
+        font-size: 20px;
+    }
+ .container h2{
+    font-size: 20px;
+ }
+
+  }
+
+  @media (min-width: 350px) and (max-width: 700px) {
+
+    header h1 {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+   
+    .container ul li a{
+        display: block;
+        font-size: 15px;
+        
+    }
+ .container h2{
+    font-size: 15px;
+ }
+ 
+
+.social-icons a{
+  font-size: 15px;
+
+}
+#foot{
+  font-size: 13px;
+
+}
+.footer-bg p a {
+    font-size: 15px;
+}
+
+
+.course-item .btn{
+ font-size: 13px;
+
+  }
+  .course-item h3{
+    font-size: 17px;
+  }
+  .application-item h3{
+    font-size: 16px;
+  }
+
+  }
+
+  

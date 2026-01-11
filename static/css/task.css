@@ -1,0 +1,93 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    ;
+}
+
+body {
+
+   
+    font-family: 'Poppins', sans-serif;
+    background-color: #edf1f5;
+}
+
+h1{
+    padding: 20px;
+    
+}
+  
+
+  
+  input[type="text"],
+  input[type="file"],
+  button[type="submit"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #0056b3;
+    border-radius: 4px;
+  
+  
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+          body {
+              font-family: Arial, sans-serif;
+              margin: 20px;
+          }
+          .container {
+              max-width: 600px;
+              margin: auto;
+          }
+          h1 {
+              text-align: center;
+          }
+          form {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+          }
+          label {
+
+              font-weight: bold;
+          }
+          input[type="file"], input[type="text"], textarea, select {
+              padding: 10px;
+              font-size: 16px;
+          }
+       #taskDescription{
+          width: 100%;  /* Make the textarea fill the width of the parent */
+          height: 200px;  /* Set a fixed height */
+          font-size: 16px;  /* Adjust font size to make sure content is readable */
+          line-height: 1.5;  /* Set line height to control spacing between lines */
+          padding: 10px;  /* Add padding to ensure text is not touching edges */
+          border: 1px solid #ccc;  /* Border style */
+          box-sizing: border-box;  /* Include padding and border in the element's total width and height */
+          resize: none;  /* Prevent resizing */
+          text-align: left;
+
+       }
+      
+  .fa-spinner{
+    animation: animate 1s ease infinite;
+  
+  }
+  @keyframes animate {
+    0%{transform: rotate(0turn);
+  }
+  100%{
+    transform: rotate(1turn)
+  }
+  
+  }

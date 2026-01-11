@@ -1,0 +1,113 @@
+{
+  "Beginner_Courses": [
+    {
+      "id": "3f66c3f5-5e6e-4b3a-8a6d-9912b4c9c6fd",
+      "title": "python installation and setup",
+      "description": "Learn how to Download Python from python.org, run the installer, and ensure you add Python to PATH. Verify the installation using the terminal by typing python --version. Optionally, create and activate a virtual environment for managing project dependencies."
+    },
+    {
+      "id": "45fe54a1-30bc-4ad9-85b6-4778ed6b4a78",
+      "title": "Variables and Data Types",
+      "description": "Learners will understand how to create and use variables to store data, learn about different data types (integers, floats, strings, booleans, and lot more), and how to manipulate these data types effectively and how to perform basic operations with different data types."
+    },
+    {
+      "id": "a45dbde9-b798-4c71-902b-f7db94f46bcf",
+      "title": "Operator and User Input",
+      "description": "Learners will understand how to perform arithmetic, comparison, logical, and assignment operations in Python. They will also learn how to capture user input using the input() function, process that input, and integrate it into their programs to create interactive scripts."
+    },
+    {
+      "id": "1b9d9dc4-83b4-4427-b3a9-1c947afc8b4b",
+      "title": "Python Statement and Conditions",
+      "description": "Learners will understand how to control the flow of a Python program using conditional statements like if, elif, and else. They will learn to execute specific blocks of code based on certain conditions, making their programs more dynamic and responsive to different inputs."
+    },
+    {
+      "id": "5e7596a9-8c2e-4040-933d-c6cc42e7f3b5",
+      "title": "Python Loops",
+      "description": "Learners will understand how to use for and while loops to execute a block of code multiple times. They will learn to iterate over sequences like lists and strings, and how to control loop behavior with break and continue statements for more efficient and flexible code."
+    },
+    {
+      "id": "cfa80b19-f18b-43bc-a17c-333abf9b3a0d",
+      "title": "Sequences and Collections",
+      "description": "Learners will explore Python's built-in data structures, including lists, tuples, sets, and dictionaries. They will learn how to store, access, and manipulate groups of data, understand indexing and slicing, and efficiently manage collections for various programming tasks."
+    },
+    {
+      "id": "9e8404d2-2851-4e1b-b3f9-df8500e92e18",
+      "title": "Python Functions",
+      "description": "Learners will understand how to define and use functions in Python to encapsulate reusable code blocks. They will learn about function arguments, return values, scope, and how functions enhance code organization, readability, and modularity in Python programs."
+    },
+    {
+      "id": "3f05fbc3-bcf4-4c0b-b2cb-04fe70e9b9f7",
+      "title": "Python Exception Handling",
+      "description": "Learners will understand how to manage errors in Python using try, except, else, and finally blocks. They will learn to handle exceptions gracefully, prevent program crashes, and ensure robust, error-resistant code."
+    },
+    {
+      "id": "618049c4-c84e-4951-b0da-18cb7bdf0499",
+      "title": "File Operations",
+      "description": "Learners will understand how to work with files in Python. They will learn to open, read, write, and close files, handle different file modes, and perform file operations like renaming or deleting files, enabling effective data storage and manipulation."
+    },
+    {
+      "id": "88cb0c8c-2870-4865-92d5-bef9f19bdfcf",
+      "title": "String Functions",
+      "description": "Learners will understand how to manipulate and process text in Python. They will learn about built-in string methods like split(), join(), replace(), and strip(), as well as string formatting techniques, enabling efficient handling and transformation of textual data."
+    }
+  ],
+  "Intermediate_Courses": [
+    {
+      "id": "342c6dc9-f9b9-47df-9450-75b51544500f",
+      "title": "Python Class and Objects",
+      "description": "In this course, learners will master Python classes and objects, including defining classes, creating objects, using constructors (__init__), implementing inheritance, understanding polymorphism, and applying encapsulation, with a focus on practical and real-world examples."
+    },
+    {
+      "id": "a1c1aeb6-b041-4df8-b8b4-276b515f5588",
+      "title": "Class and Inheritance",
+      "description": "In this course, learners will explore inheritance in Python, understanding how to create subclasses, extend and override methods, use the super() function, and apply inheritance to build more complex, reusable, and organized code structures."
+    },
+    {
+      "id": "b59ef071-71b0-43b8-8a87-9865cfc9a1f7",
+      "title": "Multithreading",
+      "description": "In this course, learners will dive into Python multithreading, learning how to create and manage threads, use the threading module, handle thread synchronization, avoid race conditions, and optimize performance by running tasks concurrently."
+    },
+    {
+      "id": "6e93f4fa-eed4-45cc-9300-b2b62f6cb07d",
+      "title": "Synchronization Threads",
+      "description": "In this course, learners will explore thread synchronization in Python, mastering techniques to manage shared resources, prevent race conditions, and ensure thread-safe operations using locks, semaphores, and the threading module."
+    },
+    {
+      "id": "eb330f0d-49a1-4417-b881-dfd1d8d4578a",
+      "title": "Event and Daemon Threads",
+      "description": "In this course, learners will understand Python's event and daemon threads, learning to signal between threads using events, manage background tasks with daemon threads, and handle thread lifecycle and termination for efficient, responsive applications."
+    },
+    {
+      "id": "6fbc5675-c7a7-42bb-9c16-6f343e961bdf",
+      "title": "Queue",
+      "description": "In this course, learners will master Python’s queue module, understanding how to use Queue, LifoQueue, and PriorityQueue to manage thread-safe data handling, coordinate tasks between threads, and efficiently process tasks in a concurrent environment."
+    },
+    {
+      "id": "9bc85798-812f-4821-924b-3ebc20488d2e",
+      "title": "Socket and Networking",
+      "description": "In this course, learners will delve into Python socket programming and networking, covering how to create and manage socket connections, implement client-server communication, handle data transmission, and build networked applications using the socket module."
+    },
+    {
+      "id": "e1a9a7da-7388-4875-b45c-c4969c44b2e4",
+      "title": "Database Management",
+      "description": "In this course, learners will explore Python database management, including connecting to databases using libraries like sqlite3 and SQLAlchemy, executing SQL queries, managing transactions, and designing and interacting with relational databases for efficient data storage and retrieval."
+    },
+    {
+      "id": "a47e9ebd-2414-4af5-917a-d230a087c026",
+      "title": "Logging",
+      "description": "In this course, learners will master Python logging, including configuring loggers, handlers, and formatters, capturing and recording log messages, setting log levels, and effectively debugging and monitoring applications through customizable logging practices."
+    }
+  ],
+  "Advanced_Courses": [
+    {
+      "id": "ca0b0e1c-83bb-4c6e-b098-2ed5a319610b",
+      "title": "Data Science with Python",
+      "description": "In this course, learners will explore data science with Python, including data manipulation with Pandas, numerical computations with NumPy, data visualization with Matplotlib and Seaborn, and applying machine learning algorithms using scikit-learn for insightful data analysis."
+    },
+    {
+      "id": "b622db43-66f4-40f0-a568-1eaeebfae92a",
+      "title": "Machine Learning",
+      "description": "In this course, learners will delve into machine learning with Python, covering data preprocessing, model selection, training and evaluation, and applying algorithms using libraries like scikit-learn and TensorFlow for predictive analytics and data-driven decision-making."
+    }
+  ]
+}

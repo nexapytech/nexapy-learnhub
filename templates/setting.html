@@ -1,0 +1,218 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+
+    <meta charset="utf-8">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+      <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+<!-- Title -->
+<title>Nexapy LearnHub | Settings</title>
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/pylearn2024.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+            <div class="container m-auto">
+
+                <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"><a href="/home"><i class="fa-solid fa-circle-arrow-left"></i></a> Account Setting | <b>{{request.user}}</b></h1>
+                <ul class="mt-5 -mr-3 flex-nowrap lg:overflow-hidden overflow-x-scroll uk-tab">
+                    <li class="uk-active"><a href="#">General</a></li>
+
+                </ul>
+
+                <div class="grid lg:grid-cols-3 mt-12 gap-8">
+                    <div>
+                        <h3 class="text-xl mb-2"> Basic</h3>
+                        <p></p>
+                    </div>
+                    <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
+
+
+                       <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
+                        <div class="col-span-2">
+                            <label for="profile_image">Profile Image:</label>
+
+                             <form action="/accounts" id="manageSettings" method="POST" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                <div class="profile-image-container">
+                                <img id="preview_image" src="{{ user_profile.profileimg.url }}">
+                            </div>
+                            <input type="file" id="profileImage" value= "{{ user_profile.profileimg.url }}" name="profileImage" class="shadow-none bg-gray-100" accept="image/*">
+
+                            </div>
+                           <div>
+                               <label for=""> First name:</label>
+                               <input type="text" placeholder="Your name.." id="firstname" value="{{user_profile.firstname}}" name="firstname" maxlength="50" class="shadow-none bg-gray-100" required>
+                           </div>
+                           <div>
+                               <label for=""> Last name:</label>
+                               <input type="text" placeholder="Your name.." id="lastname"value="{{user_profile.lastname}}"name="lastname" maxlength="50" class="shadow-none bg-gray-100" required>
+                            </div>
+                            <div>
+                                <label for="date-of-birth">Date of Birth:<label>
+                                <input   type="date" id="dateofbirth"value="{% if user_profile.dateofbirth %}{{ user_profile.dateofbirth|date:'Y-m-d' }}{% endif %}"  name="dateofbirth" class="shadow-none bg-gray-100" required>
+                             </div>
+                             <div>
+                                <label for="gender">Gender:<label>
+                                    <select class="shadow-none bg-gray-100"id="gender" id="gender"value="{{user_profile.gender}}"name="gender" required>
+                                        {% if  user_profile.gender %}
+                                        <option value="{{user_profile.gender}}" selected>{{user_profile.gender}}</option>
+                                        {%else%}
+                                        <option value="">Select Gender</option>
+                                      <option value="male">Male</option>
+                                      <option value="female">Female</option>
+                                      <option value="other">Other</option>
+                                    {%endif%}
+                                    </select>
+                             </div>
+                            <div class="col-span-2">
+                                <label for=""> Email <i class="fa-solid fa-square-check"{% if email_verify.is_email_verified %}style="color:green"{% endif %} style="color:none"></i></label>
+                                <div class="input-container">
+
+                                    <input type="text" id="emailContainer" name="email" value="{{request.user.email}}" class="shadow-none bg-gray-100" placeholder="enter new email address" readonly>
+                                    <span class="input-addon"><button type="button" id="editButton" style="color:#008cff">Edit</button></span>
+
+                                </div>
+                            </div>
+                            <div class="col-span-2">
+                                <label for="about">Bio</label>
+                                <textarea id="bio" name="bio" rows="3"  class="shadow-none bg-gray-100"   maxlength="300">{{user_profile.bio}}</textarea>
+                            </div>
+                            <div class="col-span-2">
+                                <label for=""> Location:</label>
+                                <select id="location" class="shadow-none bg-gray-100" id="country" name="country">
+                                    {%if user_profile.location %}
+                                        <option value="{{ user_profile.location }}" selected>{{user_profile.location}}</option>
+                                    {%else%}
+
+                                        {% for country_code, country_name in countries %}
+
+
+                                            {% if country_code == 'NG' %}
+
+                                            <option value="{{ country_name }}" selected>{{ country_name }}</option>
+
+                                            {% else %}
+                                            <option value="{{ country_name }}">{{ country_name }}</option>
+
+                                            {% endif %}
+
+                                        {%endfor%}
+                                    {%endif%}
+                                </select>
+
+                            </div>
+
+                                <span id="settingsError" style="color: #5c1717;"></span>
+
+                       </div>
+
+                       <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+
+
+                           <button  type="submit" class="button bg-blue-700" >
+                            <i class="fa fa-spinner" aria-hidden="true" style="display: none;"></i>
+                            <span  class="settingTxt" > Save  </span>
+                        </button>
+                       </div>
+
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl mb-2"> Privacy</h3>
+                        <p> </p>
+                    </div>
+                    <div class="bg-white rounded-md lg:shadow-lg shadow lg:p-6 p-4 col-span-2">
+
+                    <div class="space-y-3">
+
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4> Show my activities ?</h4>
+                                <div>  </div>
+                            </div>
+                            <div class="switches-list -mt-8 is-large">
+                                <div class="switch-container">
+                                    <label class="switch"><input type="checkbox" checked><span class="switch-button"></span> </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                    </form>
+                    </div>
+
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+ <!-- Scripts
+    ================================================== -->
+
+    <script src="{% static '/js/settings.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</body>
+
+</html>

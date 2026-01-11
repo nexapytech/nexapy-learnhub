@@ -1,0 +1,164 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5495969067334109"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Rules and Regulations</title>
+    <style>
+        /* styles.css */
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Container for the Terms Page */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #274a61;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Style */
+        h1 {
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Paragraph Style */
+        p {
+            font-size: 1.1em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* List of Rules */
+        ul {
+            list-style-type: circle;
+            padding-left: 0; /* Remove default padding */
+            text-align: center;
+            margin: 0 auto; /* Centering the list */
+        }
+
+        ul li {
+            display: block; /* Change to inline-block for better centering */
+            margin: 10px 0; /* Vertical margin */
+            font-size: 1.1em;
+            color: #ebebeb;
+        }
+
+        /* Link to Terms and Conditions */
+        .terms-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #007BFF;
+        }
+
+        .terms-link a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .terms-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #000000;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            ul li {
+                font-size: 1em;
+            }
+
+            button {
+                width: 100%;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Community Rules and Regulations</h1>
+        <p>Before you join our community, you must agree to the following rules:</p>
+        <ul>
+            <li>No offensive or discriminatory language.</li>
+            <li>Be respectful to others in discussions.</li>
+            <li>Do not post inappropriate or illegal content.</li>
+            <li>Do not spam or self-promote without permission.</li>
+            <!-- Add more rules as necessary -->
+        </ul>
+
+        <div class="terms-link">
+            <p>Review our <a href="{% static 'pylearnhub-terms-and-condition.pdf'%}" target="_blank">Terms and Conditions</a>.</p>
+        </div>
+
+        <form method="POST" id="terms" action="{% url 'community_rules' %}" >
+            {% csrf_token %}
+            <label>
+                <input type="checkbox" name="terms-and-conditions" required> I agree to the terms and conditions.
+            </label>
+            <button type="submit">Agree and Proceed</button>
+        </form>
+    </div>
+</body>
+</html>

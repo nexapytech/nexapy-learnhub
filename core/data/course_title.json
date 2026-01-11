@@ -1,0 +1,26 @@
+{
+    "courses": [
+        "weekly task",
+        "Python installation and setup",
+        "Variables and Data Types",
+        "Operator and User Input",
+        "Python Statement and Conditions",
+        "Python Loops",
+        "Sequences and Collections",
+        "Python Functions",
+        "Python Exception Handling",
+        "File Operations",
+        "String Functions",
+        "Python Class and objects",
+        "Class and Inheritance",
+        "Multithreading",
+        "Synchronization Threads",
+        "Event And Daemon Threads",
+        "Queue",
+        "Socket and Networking",
+        "Database Management",
+        "Logging",
+        "Data Science with Python",
+        "Machine Learning"
+    ]
+}

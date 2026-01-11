@@ -1,0 +1,210 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static  'css/home_index.css'%}" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Description -->
+<meta name="description" content="Nexapy LearnHub: Your ultimate platform to learn Python, connect with developers, and enhance your coding skills through live classes, tutorials, and a thriving community.">
+
+<!-- Keywords for Search -->
+<meta name="keywords" content="Python, programming, Python courses, coding tutorials, Python community, learn Python, Python for beginners, Nexapy LearnHub">
+
+<!-- Author -->
+<meta name="author" content="Nexapy Technologies">
+
+<!-- Title -->
+<title>Nexapy LearnHub | Home</title>
+
+<!-- Favicon -->
+<link rel="icon" href="{% static '/images/nexapytech.png' %}">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Nexapy LearnHub">
+<meta property="og:description" content="Learn Python, connect with developers, and grow with Nexapy LearnHub. Join live classes, explore tutorials, and be part of a supportive community.">
+<meta property="og:image" content="https://learn.nexapytechnologies.com/static/images/pylearn2024.png">
+<meta property="og:url" content="https://learn.nexapytechnologies.com">
+<meta property="og:type" content="website">
+
+
+</head>
+<style>
+
+
+</style>
+<body>
+        <div class="header-element">
+        <div class="logo-left">
+            <h1 style=" color:#274a61">Nexapy LearnHub</h1>
+
+            </div>
+         <div class="middle-header">
+         <a href="/courses" target="_blank"> <button  class=" button cources"><i class="fa-solid fa-book"></i> courses</button> </a>
+            <a href="https://www.python.org/doc/"> <button class="button doc">Python Doc</button> </a>
+            <a href="/community"><button class="button support" > <i class="fa-solid fa-people-group"></i> community</button> </a>
+            <a href="/course_task"><button class="button support" > <i class="fa-solid fa-laptop-file"></i> Submit Task</button> </a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+ <!-------------------------------------mobile view------------------------------------------------>
+
+
+ <div class="accounts" id="mobile-account">
+
+    <div class="buttons ">
+      <div class="dropdown-onmouse">
+       <button id="openModal" class="join-button join "> <i class="fa-solid fa-user"> <i class="fa-solid fa-caret-down"></i></i></button>
+       <div class="dropdown-content">
+        <a href="/notifications"><i class="fa-solid fa-bell"></i> Notifications <span class="{% if notificationallcount > 0 %} icon_badge {%endif%}">{% if notificationallcount > 0 %}{{notificationallcount}} {%endif%}</span></a>
+        <a href="/accounts"><i class="fa-solid fa-gear"></i> Manage Account</a>
+        <div class="mobile-accounts">
+        <a href="/courses"target="_blank"> <i class="fa-solid fa-book"></i>  courses </a>
+        <a href="https://www.python.org/doc/"><i class="fa-solid fa-file-code"></i>  Python Doc </a>
+        <a href="/course_task"> <i class="fa-solid fa-laptop-file"></i> Submit Task </a>
+        </div>
+        <a href="/community"><i class="fa-solid fa-people-group">  </i> <span>Join community</span></a>
+        <a href="/logout" style="color: #801010; font-weight: bolder;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a>
+      </div>
+      </div>
+
+       <div >
+         <p style="color:#1a3141;font-weight:900;">hello <b style="color:#57bcff">{{request.user.username}}</b></p></div>
+
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+    </div>
+    <!-----------------------------------------------------end----------------------------------------->
+        <div class="notification-fixed">
+          <form  action="resend-verification" id="resendVerification"method="POST">
+            {%csrf_token%}
+            {%if messages%}
+            {% for message in messages%}
+                   <div
+                   class="notification-container"  style="color:#1c32ff; font-weight:600 ;">{{message}} <button   type="submit"style="border: none; background: none;text-decoration:none; cursor: pointer;color:#57bcff">
+                    <i class="fa fa-spinner  resendbtn-spinner" aria-hidden="true" style="display:none;"></i>
+                    <span class="resendbtn">resend</span>
+                </button></div>
+
+
+            {%endfor%}
+            {%else%}
+             <script>
+            document.addEventListener("DOMContentLoaded", function() {
+           var element = document.querySelector('.notification-fixed');
+           var header = document.querySelector('.header-element')
+           element.style.borderBottom = "None";
+           header.style.paddingTop='0'
+
+    });
+             </script>
+            {%endif%}
+        </form>
+        </div>
+
+
+
+
+
+
+    <!----------------------------main body------------------------------------------->
+   <div class="main-bg">
+
+
+    <div class="main">
+
+        <h1>Learn Python <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></h2>
+            <h1>Connect with Developers <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></hr>
+            <h1>Join Community <i class="fa-thin fa-greater-than"></i><i class="fa-thin fa-greater-than"></i></h1>
+            <h2 >Welcome to our Python Learning Platform!</h2>
+
+        <p>Explore our courses and join live classes to enhance your Python skills.</p>
+        <section id="features"><br>
+            <h3>Key Features</h3>
+
+            <ul>
+                <li>Comprehensive Python Courses</li>
+                <li>Live Interactive Classes</li>
+                <li>Engage in a Supportive Learning Community</li>
+                <li>Ask Questions and Participate in Discussions</li>
+            </ul>
+        </section>
+    </div>
+
+
+
+       </div>
+        <section  id="get-started">
+
+            <h1>Nexapy LearnHub Community Guidelines and Code of Conduct</h1>
+
+            <p>
+              The Nexapy LearnHub thrives on the strength of our community. Therefore, it is crucial that we nurture a space that is open, warm, and inviting.
+
+              <h3>Members of Nexapy LearnHub:</h3>
+
+              <ul>
+              <li>Show Consideration: We are mindful of our fellow members</li>
+               <li>Demonstrate Respect: We honor others and their positions, skills, commitments, and efforts</li>
+
+              <li>Display Empathy: We listen attentively and handle differing opinions with tact</li>
+              <li>Embrace Constructive Feedback: When we disagree, we voice our concerns respectfully</li>
+              <li>Use Inclusive Language: We welcome everyone to participate, creating an environment where all voices matter </li>
+              <li>Have Fun: If we’re not enjoying ourselves and each other’s company, then we’re missing the mark!</li>
+              </ul>
+              <hr>
+              <h3 >PLEDGE</h3>
+              <p id="pledge" >As members of  Nexapy LearnHub, we pledge to uphold the standards and principles outlined in the Python Software Foundation’s Code of Conduct.  Explore our Community Slack Guide for tips on effective questioning, clear communication, and improving the readability of your code examples.</p>
+            <a href= "/community"><button  class="join join-button get-btn"> <i class="fa-solid fa-people-group"></i> Join Community</button> </a>
+
+        </section>
+        <div class="footer-bg">
+            <footer>
+
+                    <ul class="social-icons">
+                        <li><a href="https://www.facebook.com/profile.php?id=100091470267419&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://www.twitter.com/pythoneer_001" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/samson-odetola-509657249" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <!-- Add more social links with Font Awesome icons as needed -->
+                      </ul>
+                  <!-- Add more social links with Font Awesome icons as needed -->
+                </ul>
+                <p id="foot">
+                &copy; 2025 <b>Nexapy Technologies</b> All rights reserved. </p>
+              </footer>
+          </div>
+
+<script src="{%static   'js/dropdown.js' %}?v=1.1"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{%static   'js/refresh.js' %}?v=1.1"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+</body>
+</html>

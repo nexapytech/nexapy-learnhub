@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            background-color: #ffffff;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .email-header {
+            background-color:#274a61;
+            color: white;
+            padding: 10px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+        }
+        .email-body {
+            padding: 20px;
+            color: #333333;
+        }
+        .email-body h2 {
+            color: #274a61;
+        }
+        .email-body p {
+            line-height: 1.6;
+        }
+        .email-footer {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0888ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0c3357;
+        }
+        .social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #0888ff;
+    font-size: 20px;
+  }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Congratulations on your Task!</h1>
+        </div>
+        <div class="email-body">
+            <h2>Hi {{ user.username }},</h2>
+             <p>
+        Congratulations on submitting your weekly task for the week,  Your task is currently under review by admin.
+        You will be notified on the group chat
+    </p>
+
+            <p>We're excited to have you join our learning community!</p>
+            <p>Here's what you can do next:</p>
+            <ul>
+                <li>keep checking  for more update on weekly task </li>
+                <li>Connect with fellow learners and instructors.</li>
+            </ul>
+
+            <p>To join the course community and stay updated on , click the link below:</p>
+            <a href="{{ community_link }}" class="btn">Join Course Community</a>
+            <p>If you have any questions, feel free to reply to this email or contact our support team.</p>
+        </div>
+        <div class="email-footer">
+            <ul class="social-icons">
+                <li><a href="https://www.facebook.com/profile.php?id=100091470267419&mibextid=LQQJ4d" ></a></li>
+                    <li><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://www.twitter.com/pythoneer_001" ><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/samson-odetola-509657249" ><i class="fab fa-linkedin"></i></a></li>
+                <!-- Add more social links with Font Awesome icons as needed -->
+              </ul>
+            <p>Thank you for being part of our learning platform!</p>
+            <p>&copy; 2025 Nexapy Technologies, All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
