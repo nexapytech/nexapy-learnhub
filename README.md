@@ -2,7 +2,7 @@
 
 ## 🛠 Tech Stack
 - **Backend:** Python3  Django  
-- **Database:** MySQL  
+- **Database:** MySQL, sqlite3  
 - **Environment Management:** Python Decouple  
 - **Containerization:** Docker  
 - **OS Tested On:** Linux (Ubuntu 24.04 recommended)
@@ -53,4 +53,5 @@ docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
 
 ### 1. Clone the Repository
+
 
