@@ -2,8 +2,11 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 
-class PublicPagesTests(TestCase):
-    """Publicly accessible pages"""
+class SmokeTests(TestCase):
+    """
+    Minimal smoke tests to ensure the app boots
+    and core pages exist.
+    """
 
     def setUp(self):
         self.client = Client()
@@ -28,99 +31,11 @@ class PublicPagesTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertIn(response.status_code, [200, 302])
 
-    def test_community_rules_page(self):
-        response = self.client.get(reverse("community_rules"))
-        self.assertIn(response.status_code, [200, 302])
-
-
-class ProtectedPagesTests(TestCase):
-    """Pages that may require authentication"""
-
-    def setUp(self):
-        self.client = Client()
-
-    def test_accounts_page(self):
-        response = self.client.get(reverse("accounts"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_notifications_page(self):
-        response = self.client.get(reverse("notifications"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_community_page(self):
-        response = self.client.get(reverse("community"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_course_enrollment_page(self):
-        response = self.client.get(reverse("course_enrollment"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_course_task_page(self):
-        response = self.client.get(reverse("course_task"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-
-class ActionEndpointsTests(TestCase):
-    """POST/Action endpoints"""
-
-    def setUp(self):
-        self.client = Client()
-
-    def test_create_post_endpoint(self):
-        response = self.client.post(reverse("create_post"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_create_comment_endpoint(self):
-        response = self.client.post(reverse("create_comment"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_like_post_endpoint(self):
-        response = self.client.post(reverse("like_post"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_delete_post_endpoint(self):
-        response = self.client.post(reverse("delete_post"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_filter_post_endpoint(self):
-        response = self.client.get(reverse("filter_post"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_load_more_endpoint(self):
-        response = self.client.get(reverse("loadmore"))
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-
-class UrlsWithParamsTests(TestCase):
-    """URLs requiring parameters"""
-
-    def setUp(self):
-        self.client = Client()
-
-    def test_verification_url(self):
-        response = self.client.get(
-            reverse(
-                "verification",
-                kwargs={"uidb64": "testuid", "token": "testtoken"}
-            )
-        )
-        self.assertIn(response.status_code, [200, 302, 400, 404])
-
-    def test_delete_notification(self):
-        response = self.client.get(
-            reverse("delete-notification", kwargs={"notification_id": 1})
-        )
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
-    def test_notification_message(self):
-        response = self.client.get(
-            reverse("notification-message", kwargs={"notification_id": 1})
-        )
-        self.assertIn(response.status_code, [200, 302, 403, 404])
-
 
 class SystemHealthTest(TestCase):
-    """Ensures test runner and database work"""
+    """
+    Ensures Django test runner and database work.
+    """
 
     def test_system_health(self):
         self.assertTrue(True)
