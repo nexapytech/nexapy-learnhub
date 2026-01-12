@@ -25,10 +25,7 @@ urlpatterns = [
     path('delete_post', views.Delete_Post, name='delete_post'),
     path('filter_post', views.Filter_posts, name='filter_post'),
     path('loadmore', views.Load_More, name='loadmore'),
-    path('.well-known/pki-validation/8375F54BE9585F6CD339DEB9662EEC87.txt', views.serve_validation_file),
-
-
-
+ 
 
 
 
