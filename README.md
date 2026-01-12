@@ -45,7 +45,8 @@ Built with **Django**, **MySQL**, and **Docker**, PyLearnHub demonstrates profes
 
 ## ⚙️ Installation & Setup (Linux / Ubuntu Recommended)
 ### 1. Clone the Repository
-git clone https://github.com/nexapytech/nexapy-learnhub.git.
+git clone https://github.com/nexapytech/nexapy-learnhub.git.     
+
 cd nexapy-learnhub
 
 ```bash
@@ -53,5 +54,6 @@ docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
 
 ### 1. Clone the Repository
+
 
 
