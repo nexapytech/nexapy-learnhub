@@ -45,6 +45,15 @@ Built with **Django**, **MySQL**, and **Docker**, PyLearnHub demonstrates profes
 
 ---
 
+## ⚙️ Make Commands
+To make your repo **easy to run and test**, we provide a Makefile:
+### Run the API locally
+make run
+
+### Run all tests
+make test
+
+---
 
 ## ⚙️ Installation & Setup (Linux / Ubuntu Recommended)
 ### 1. Clone the Repository
@@ -55,6 +64,7 @@ cd nexapy-learnhub
 ```bash
 docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
+
 
 
 
