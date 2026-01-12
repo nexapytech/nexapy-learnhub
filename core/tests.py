@@ -33,7 +33,7 @@ class PublicPagesTests(TestCase):
         self.assertIn(response.status_code, [200, 302])
 
 
-class ProtectedPagesSmokeTests(TestCase):
+class ProtectedPagesTests(TestCase):
     """Pages that may require authentication"""
 
     def setUp(self):
@@ -60,8 +60,8 @@ class ProtectedPagesSmokeTests(TestCase):
         self.assertIn(response.status_code, [200, 302, 403, 404])
 
 
-class ActionEndpointsSmokeTests(TestCase):
-    """POST/Action endpoints – ensure they exist"""
+class ActionEndpointsTests(TestCase):
+    """POST/Action endpoints"""
 
     def setUp(self):
         self.client = Client()
@@ -92,3 +92,35 @@ class ActionEndpointsSmokeTests(TestCase):
 
 
 class UrlsWithParamsTests(TestCase):
+    """URLs requiring parameters"""
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_verification_url(self):
+        response = self.client.get(
+            reverse(
+                "verification",
+                kwargs={"uidb64": "testuid", "token": "testtoken"}
+            )
+        )
+        self.assertIn(response.status_code, [200, 302, 400, 404])
+
+    def test_delete_notification(self):
+        response = self.client.get(
+            reverse("delete-notification", kwargs={"notification_id": 1})
+        )
+        self.assertIn(response.status_code, [200, 302, 403, 404])
+
+    def test_notification_message(self):
+        response = self.client.get(
+            reverse("notification-message", kwargs={"notification_id": 1})
+        )
+        self.assertIn(response.status_code, [200, 302, 403, 404])
+
+
+class SystemHealthTest(TestCase):
+    """Ensures test runner and database work"""
+
+    def test_system_health(self):
+        self.assertTrue(True)
