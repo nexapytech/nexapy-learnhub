@@ -1,0 +1,10 @@
+# Ignore frontend files in language stats
+*.js linguist-vendored
+*.css linguist-vendored
+*.html linguist-vendored
+*.scss linguist-vendored
+
+# Ignore frontend folders
+frontend/* linguist-vendored
+static/* linguist-vendored
+templates/* linguist-vendored
