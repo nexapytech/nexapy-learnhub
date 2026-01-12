@@ -53,7 +53,7 @@ cd nexapy-learnhub
 docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
 
-### 1. Clone the Repository
+
 
 
 
