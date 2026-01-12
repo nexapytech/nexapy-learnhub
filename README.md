@@ -1,5 +1,5 @@
 
-![CI](https://github.com/nexapytech/nexapy-learnhub/actions/workflows/ci.yml/badge.svg
+![CI](https://github.com/nexapytech/nexapy-learnhub/actions/workflows/ci.yml/badge.svg)
 
 # PyLearnHub Python Learning Platform
 
@@ -55,6 +55,7 @@ cd nexapy-learnhub
 ```bash
 docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
+
 
 
 
