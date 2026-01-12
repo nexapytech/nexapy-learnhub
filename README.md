@@ -1,3 +1,5 @@
+![CI](https://github.com/nexapytech/django-cbt-platform/actions/workflows/ci.yml/badge.svg)
+
 # PyLearnHub Python Learning Platform
 
 ## 🛠 Tech Stack
@@ -52,6 +54,7 @@ cd nexapy-learnhub
 ```bash
 docker build -t pylearnhub .
 docker run -p 8000:8000 pylearnhub
+
 
 
 
